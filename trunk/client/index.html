@@ -48,11 +48,11 @@
 					<div class="accordion" id="accordion2">
 						<div class="accordion-group">
 						  <div class="accordion-heading">
-							<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
 							  Creer une partie !
 							</a>
 						  </div>
-						  <div id="collapseOne" class="accordion-body collapse" style="height: 0px;">
+						  <div id="collapseOne" class="accordion-body collapse in">
 							<div class="accordion-inner">
 								<div class="row-fluid" style="text-align:center">
 									<p>Type de partie :</p>
@@ -112,71 +112,71 @@
 											<thead>
 											<tr>
 											<th>Nom de la partie</th>
-											<th>Admin</th>
-											<th>Nombre de joueurs requis</th>
+											<th>Createur</th>
+											<th>Nombre de joueurs</th>
 											<th>Rejoindre</th>
 											</tr>
 											</thead>
 											<tbody>
-											<tr>
+											<tr class="active">
 											<td></td>
 											<td></td>
 											<td></td>
-											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
 											</tr>
-											<tr>
+											<tr class="success">
 											<td></td>
 											<td></td>
 											<td></td>
-											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
 											</tr>
-											<tr>
+											<tr class="active">
 											<td></td>
 											<td></td>
 											<td></td>
-											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
 											</tr>
-											<tr>
+											<tr class="success">
 											<td></td>
 											<td></td>
 											<td></td>
-											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
 											</tr>
-											<tr>
+											<tr class="active">
 											<td></td>
 											<td></td>
 											<td></td>
-											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
 											</tr>
-											<tr>
+											<tr class="success">
 											<td></td>
 											<td></td>
 											<td></td>
-											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
 											</tr>
-											<tr>
+											<tr class="active">
 											<td></td>
 											<td></td>
 											<td></td>
-											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
 											</tr>
-											<tr>
+											<tr class="success">
 											<td></td>
 											<td></td>
 											<td></td>
-											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
 											</tr>
-											<tr>
+											<tr class="active">
 											<td></td>
 											<td></td>
 											<td></td>
-											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
 											</tr>
-											<tr>
+											<tr class="success">
 											<td></td>
 											<td></td>
 											<td></td>
-											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
 											</tr>
 											</tbody>
 											</table>
@@ -194,6 +194,7 @@
 <script>
 $(function(){
 	// Gestion de la configuration d'une partie
+
 	$('#nbJoueur').on('change', function() {
 		nbJoueur = $('#nbJoueur').val();
 		if (nbJoueur == 2){
