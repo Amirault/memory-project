@@ -99,6 +99,14 @@ var myIDpartie;
 		}
 		
 		$('#message').val(''); //reset text
+		$('.partie').each(function(i, obj) {
+    //test
+	console.debug("rentre ds la focntion");
+	if (myIDpartie==myIDpartie)
+	{
+	$(".partie[part='"+myIDpartie+"']").hide();
+	}
+});
 	};
 	
 	websocket.onerror	= function(ev){$('#message_box').append("<div class=\"system_error\">Error Occurred - "+ev.data+"</div>");}; 
@@ -106,14 +114,7 @@ var myIDpartie;
 	
 	//filtrage
 	
-	$('.partie').each(function(i, obj) {
-    //test
-	$echo("rentre ds la focntion");
-	if (myIDpartie==myIDpartie)
-	{
-	$(".partie[part='"+myIDpartie+"']").hide();
-	}
-});
+	
 
 	
 });
