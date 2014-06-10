@@ -4,6 +4,7 @@
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 		<script src='bootstrap/js/jquery.js'></script>
 		<script src='bootstrap/js/bootstrap.js'></script>
+		<script src='bootstrap/js/blockUI.js'></script>
 		<title>Memory</title>
 	</head>
 	<body>
@@ -192,13 +193,11 @@
 	</body>
 </html>
 <script type="text/javascript"> 
+    //$(document).ajaxStop($.unblockUI); 
  
-    // unblock when ajax activity stops 
-    $(document).ajaxStop($.unblockUI); 
- 
-    function test() { 
+   /* function test() { 
         $.ajax({ url: 'wait.php', cache: false }); 
-    } 
+    } */
  
     $(document).ready(function() { 
         $('#pageDemo1').click(function() { 
@@ -275,6 +274,7 @@ $(function(){
 				var pwdValid = $('#validMdp').val();
 				if (pwd == pwdValid){
 					console.debug("inscription de l'utilisateur");
+					
 					// requete ajax d'inscription
 				}
 				else{
@@ -284,12 +284,14 @@ $(function(){
 			else{
 				// connexion de l'utilisateur
 				console.debug("connexion de l'utilisateur");
+				$.blockUI({ message: '<h1>Connexion en cours...</h1>',theme: true,
+    baseZ: 2000  });
 				// requete ajax de connexion
 			}
 			
 			
 		}
-		connexionValid = true;
+		//connexionValid = true;
 		if ( connexionValid == true){
 			// Redirection vers l'acceuil
 			console.debug("tout est correct -> accès jeu");
@@ -314,6 +316,7 @@ $(function(){
 				}
 			}
 		}
+		return false;
 	});
 });
 </script>
