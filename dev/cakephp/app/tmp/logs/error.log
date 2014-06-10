@@ -1,0 +1,9 @@
+2014-06-10 11:43:32 Error: [MissingControllerException] Controller class PmController could not be found.
+Exception Attributes: array (
+  'class' => 'PmController',
+  'plugin' => NULL,
+)
+Request URL: /Memory/pm
+Stack Trace:
+#0 C:\Program Files (x86)\EasyPHP-DevServer-14.1VC9\data\localweb\Memory\app\webroot\index.php(108): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#1 {main}
