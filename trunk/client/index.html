@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+	<head>
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+		<script src='bootstrap/js/jquery.js'></script>
+		<script src='bootstrap/js/bootstrap.js'></script>
+		<title>Memory</title>
+	</head>
+	<body>
+		<div id="JEU">
+		</div>
+		<div id="modalStart" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-header">
+				<h3>Bienvenue, vueillez vous identifier :</h3>
+			</div>
+			<form id="formConnexion" name="formConnexion" >
+				<div class="modal-body">
+					<div class="row-fluid">
+						<div class="span1"></div>
+						<div class="span4">
+								<input id="pseudo" name="pseudo" placeholder="Votre Pseudo" class="input-xlarge"  type="text" required/>
+								<input id="mdp" name="mdp" placeholder="Votre mot de passe" class="input-xlarge"  type="password" required/>
+								<a href="#"  id="activeInscription">S'inscrire</a>
+								ou
+								<a href="#" id="activeConnexion">Se connecter</a>
+								<input id="validMdp" class="hide" name="validMdp" placeholder="Confirmer le mot de passe" class="input-xlarge"  type="password" required/> 
+						</div>
+						<div class="span1"></div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="row-fluid">
+						<div class="span1"></div>
+						<div class="span10" style="text-align:center">
+							<button  class="btn" id="validForm" value="connexion">Connexion</button>
+						</div>
+						<div class="span1"></div>
+					</div>
+				</div>
+			</form>
+		</div>
+		<div id="modalBeforeGame" class="modal hide fade" tabindex="-1" role="dialog">
+			<div class="modal-header">
+				<h3>Avant de jouer :</h3>
+			</div>
+			<div class="modal-body">
+				<div class="row-fluid">
+					<div class="accordion" id="accordion2">
+						<div class="accordion-group">
+						  <div class="accordion-heading">
+							<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+							  Creer une partie !
+							</a>
+						  </div>
+						  <div id="collapseOne" class="accordion-body collapse" style="height: 0px;">
+							<div class="accordion-inner">
+								<div class="row-fluid" style="text-align:center">
+									<p>Type de partie :</p>
+									<span class="btn-group" data-toggle="buttons-radio" id="typePartie">
+									  <button class="btn active" data-value="0">Arcade</button>
+									  <button class="btn" data-value="1">Versus</button>
+									</span>
+								</div>
+								<br />
+								<div class="row-fluid">
+									<div class="span3">
+										<p>Nom de la partie :</p>
+										<input type="text" name="nomPartie" id="nomPartie" class="span12"/>
+									</div>
+									<div class="span1"></div>
+									<div class="span4">
+										<p>
+											Nombre de joueurs : 
+										</p>
+										<select id="nbJoueur" name="nbJoueur" class="combobox span10" >
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+										</select>
+									</div>
+									<div class="span3 pull-right">
+										<p>
+											Nombre paire : 
+										</p>
+										<span class="btn-group" data-toggle="buttons-radio" id="nbPaire">
+										  <button class="nbPaire btn active" data-value="8">8</button>
+										  <button class="nbPaire btn" data-value="18">18</button>
+										  <button class="nbPaire btn" data-value="32">32</button>
+										</span>
+									</div>
+								</div>
+								<div class="row-fluid" style="text-align:center">
+									<button class="btn btn-primary"> Creer la partie </button>
+								</div>
+							</div>
+						  </div>
+						</div>
+						<div class="accordion-group">
+						  <div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+							  Rejoindre une partie !
+							</a>
+						  </div>
+						  <div id="collapseTwo" class="accordion-body collapse" style="height: 0px;">
+							<div class="accordion-inner">
+								<div class="table-responsive">
+											<table class="table table-small-font table-bordered table-striped">
+											<thead>
+											<tr>
+											<th>Nom de la partie</th>
+											<th>Admin</th>
+											<th>Nombre de joueurs requis</th>
+											<th>Rejoindre</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											</tr>
+											<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											</tr>
+											<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											</tr>
+											<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											</tr>
+											<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											</tr>
+											<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											</tr>
+											<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											</tr>
+											<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											</tr>
+											<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											</tr>
+											<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											</tr>
+											</tbody>
+											</table>
+											</div>
+								
+							</div>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+$(function(){
+	// Gestion de la configuration d'une partie
+	$('#nbJoueur').on('change', function() {
+		nbJoueur = $('#nbJoueur').val();
+		if (nbJoueur == 2){
+			$( ".nbPaire[data-value=8]" ).removeAttr( "disabled" );
+			$( ".nbPaire[data-value=18]" ).removeAttr( "disabled" );
+			$( ".nbPaire[data-value=32]" ).removeAttr( "disabled" );
+		}
+		else if ((nbJoueur > 2)&&(nbJoueur <= 4)){
+			$( ".nbPaire[data-value=8]" ).attr("disabled", "disabled");
+			$( ".nbPaire[data-value=18]" ).removeAttr( "disabled" );
+			$( ".nbPaire[data-value=32]" ).removeAttr( "disabled" );
+		}
+		else if (nbJoueur > 4){
+			$( ".nbPaire[data-value=8]" ).attr("disabled", "disabled");
+			$( ".nbPaire[data-value=18]" ).attr("disabled", "disabled");
+			$( ".nbPaire[data-value=32]" ).removeAttr( "disabled" );
+		}
+	});
+
+});	
+</script>
+<script>
+$(function(){
+	// Gestion de la page de login et inscription
+	$('#modalStart').modal('show');
+	$('#validMdp').hide();
+	$("#activeInscription").click(function(){
+		$('#validMdp').show();
+		$('#validForm').val('inscription');
+		console.debug($('#validForm').val());
+		return false;
+	});
+	$("#activeConnexion").click(function(){
+		$('#validMdp').hide();
+		$('#validForm').val('connexion');
+		console.debug($('#validForm').val());
+		return false;
+	});
+	$("#validForm").click(function(){
+		// requete ajax TODO (validation login server)
+		var pseudo = $("#pseudo").val();
+		var pwd = $("#mdp").val();
+				
+		var connexionValid  = false;
+		if (pseudo.length != 0  && pseudo.length <= 10 && pseudo.length >= 3 && pwd.length != 0 && pwd.length >= 4){
+			if ($('#validForm').val() == "inscription"){
+				// Inscription de l'utilisateur
+				var pwdValid = $('#validMdp').val();
+				if (pwd == pwdValid){
+					console.debug("inscription de l'utilisateur");
+					// requete ajax d'inscription
+				}
+				else{
+					connexionValid = false;
+				}
+			}
+			else{
+				// connexion de l'utilisateur
+				console.debug("connexion de l'utilisateur");
+				// requete ajax de connexion
+			}
+			
+			
+		}
+		connexionValid = true;
+		if ( connexionValid == true){
+			// Redirection vers l'acceuil
+			console.debug("tout est correct -> accès jeu");
+			$('#modalStart').modal('hide');
+			$('#modalBeforeGame').modal('show');
+			
+		}
+		else{
+			//rien
+			if ((pseudo.length > 10) ||(pseudo.length < 3)){
+					alert("Le pseudo doit etre compris entre 3 et 10 caractere, veuillez saisir un autre pseudo");
+					return false;
+			}
+			if (pwd.length < 4){
+				alert("Le mot de passe doit faire plus de 3 caractere, veuillez saisir votre mot de passe");
+				return false;
+			}
+			if ($('#validForm').val() == "inscription"){
+				if (pwd != pwdValid){
+					alert("La confirmation du mot de passe est incorrecte, veuillez saisir votre mot de passe");
+					return false;
+				}
+			}
+		}
+	});
+});
+</script>
