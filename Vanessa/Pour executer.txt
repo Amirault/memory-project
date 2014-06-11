@@ -1,0 +1,1 @@
+php -q C:\wamp\www\Memory\server.php

@@ -102,7 +102,7 @@ var myIDpartie;
 		$('.partie').each(function(i, obj) {
     //test
 	console.debug("rentre ds la focntion");
-	if (myIDpartie==myIDpartie)
+	if (myIDpartie==50)
 	{
 	$(".partie[part='"+myIDpartie+"']").hide();
 	}

@@ -5,52 +5,36 @@
    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>site-html</title>
     <meta content="">
-  <head>
-      <!-- Bouton connexion google -->
-    <script type="text/javascript">
- 
- 
-<!-- Placez cette balise là où vous souhaitez positionner le bouton +1. -->
-<g:plusone annotation="inline"></g:plusone>
-    </script>
- <?php // index.php 
- require_once 'openid.php' ; 
- $openid = new LightOpenID ( "index.html" ); 
- $openid -> identity = 'https://www.google.com/accounts/o8/id' ; 
- $openid -> required = array ( 'namePerson/first' , 'namePerson/last' , 'contact/email' , ); 
- $openid -> returnUrl = 'C:\Users\Vanessa\Documents\Projet Memory\Vanessa\login.php' ?>  
- <a href=" <?php echo $openid -> authUrl () ?> ">Login with Google</a>
+	
+  </head>
 
 
-<!-- Placez cet appel d'affichage à l'endroit approprié. -->
-<script type="text/javascript">
-  window.___gcfg = {lang: 'fr'};
 
-  (function() {
-    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-    po.src = 'https://apis.google.com/js/plusone.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
-</script>
 
  
   <body>
-  </head>
+  <!--
+  <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '{your-app-id}',
+          xfbml      : true,
+          version    : 'v2.0'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+  -->
+
   
- 
-
-<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-<!-- 
-
-
-
-
-  <img src="http://www.polytech.u-psud.fr/skins/polytech/resources/img/logoweb_polytech.png"
-  alt="logo polytech" logo polytech" /> -->
-  </body>
-  <script type="text/javascript">
-
-
+   <!--Bouton Like -->
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -60,5 +44,37 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-  </script>
+   <!--Bouton Partager -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+</script>
+
+
+
+     <!--Bouton Like -->
+<div class="fb-like" data-href="http://memoryapp4.olympe.in/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+
+   <!--Bouton Partager -->
+<div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button_count"></div>
+
+ <!--
+    <img src="http://www.polytech.u-psud.fr/skins/polytech/resources/img/logoweb_polytech.png"
+  alt="logo polytech" logo polytech" />  -->
+  <!--
+<script>
+  FB.ui({  method: 'feed',
+  caption:'Jai fait 360 points !',
+  name :'Jouer à Memory avec moi!',
+  link:'http://memoryapp4.olympe.ui'
+}, function(ret){console.log(ret);});
+  </script> -->
+  </body>
+
 </html>
