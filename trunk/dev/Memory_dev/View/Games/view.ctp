@@ -8,7 +8,7 @@
 		</dd>
 		<dt><?php echo __('Difficulty'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($game['Difficulty']['id'], array('controller' => 'difficulties', 'action' => 'view', $game['Difficulty']['id'])); ?>
+			<?php echo $this->Html->link($game['Difficulty']['name'], array('controller' => 'difficulties', 'action' => 'view', $game['Difficulty']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Name'); ?></dt>
@@ -16,19 +16,14 @@
 			<?php echo h($game['Game']['name']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('TypeOfGame'); ?></dt>
+		<dt><?php echo __('Game Type'); ?></dt>
 		<dd>
-			<?php echo h($game['Game']['typeOfGame']); ?>
+			<?php echo $this->Html->link($game['GameType']['name'], array('controller' => 'game_types', 'action' => 'view', $game['GameType']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('IsPending'); ?></dt>
 		<dd>
 			<?php echo h($game['Game']['isPending']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('NumberOfPlayers'); ?></dt>
-		<dd>
-			<?php echo h($game['Game']['numberOfPlayers']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('NumberMaximumOfPlayers'); ?></dt>
@@ -41,9 +36,9 @@
 			<?php echo h($game['Game']['currentPlayer']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('HostPlayer'); ?></dt>
+		<dt><?php echo __('Player'); ?></dt>
 		<dd>
-			<?php echo h($game['Game']['hostPlayer']); ?>
+			<?php echo $this->Html->link($game['Player']['id'], array('controller' => 'players', 'action' => 'view', $game['Player']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
@@ -67,6 +62,10 @@
 		<li><?php echo $this->Html->link(__('New Game'), array('action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Difficulties'), array('controller' => 'difficulties', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Difficulty'), array('controller' => 'difficulties', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Game Types'), array('controller' => 'game_types', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Game Type'), array('controller' => 'game_types', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Players'), array('controller' => 'players', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Player'), array('controller' => 'players', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Game Cards'), array('controller' => 'game_cards', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Game Card'), array('controller' => 'game_cards', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Game Players'), array('controller' => 'game_players', 'action' => 'index')); ?> </li>
@@ -83,6 +82,8 @@
 		<th><?php echo __('Card Id'); ?></th>
 		<th><?php echo __('Position X'); ?></th>
 		<th><?php echo __('Position Y'); ?></th>
+		<th><?php echo __('IsFlippedUp'); ?></th>
+		<th><?php echo __('IsGone'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
@@ -94,6 +95,8 @@
 			<td><?php echo $gameCard['card_id']; ?></td>
 			<td><?php echo $gameCard['position_x']; ?></td>
 			<td><?php echo $gameCard['position_y']; ?></td>
+			<td><?php echo $gameCard['isFlippedUp']; ?></td>
+			<td><?php echo $gameCard['isGone']; ?></td>
 			<td><?php echo $gameCard['created']; ?></td>
 			<td><?php echo $gameCard['modified']; ?></td>
 			<td class="actions">
@@ -120,7 +123,8 @@
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Player Id'); ?></th>
 		<th><?php echo __('Game Id'); ?></th>
-		<th><?php echo __('MasterCard'); ?></th>
+		<th><?php echo __('Card Id'); ?></th>
+		<th><?php echo __('Points'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
@@ -130,7 +134,8 @@
 			<td><?php echo $gamePlayer['id']; ?></td>
 			<td><?php echo $gamePlayer['player_id']; ?></td>
 			<td><?php echo $gamePlayer['game_id']; ?></td>
-			<td><?php echo $gamePlayer['masterCard']; ?></td>
+			<td><?php echo $gamePlayer['card_id']; ?></td>
+			<td><?php echo $gamePlayer['points']; ?></td>
 			<td><?php echo $gamePlayer['created']; ?></td>
 			<td><?php echo $gamePlayer['modified']; ?></td>
 			<td class="actions">

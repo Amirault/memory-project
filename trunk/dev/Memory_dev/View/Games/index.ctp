@@ -5,12 +5,11 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('difficulty_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
-			<th><?php echo $this->Paginator->sort('typeOfGame'); ?></th>
+			<th><?php echo $this->Paginator->sort('gameType_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('isPending'); ?></th>
-			<th><?php echo $this->Paginator->sort('numberOfPlayers'); ?></th>
 			<th><?php echo $this->Paginator->sort('numberMaximumOfPlayers'); ?></th>
 			<th><?php echo $this->Paginator->sort('currentPlayer'); ?></th>
-			<th><?php echo $this->Paginator->sort('hostPlayer'); ?></th>
+			<th><?php echo $this->Paginator->sort('player_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -19,15 +18,18 @@
 	<tr>
 		<td><?php echo h($game['Game']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($game['Difficulty']['id'], array('controller' => 'difficulties', 'action' => 'view', $game['Difficulty']['id'])); ?>
+			<?php echo $this->Html->link($game['Difficulty']['name'], array('controller' => 'difficulties', 'action' => 'view', $game['Difficulty']['id'])); ?>
 		</td>
 		<td><?php echo h($game['Game']['name']); ?>&nbsp;</td>
-		<td><?php echo h($game['Game']['typeOfGame']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($game['GameType']['name'], array('controller' => 'game_types', 'action' => 'view', $game['GameType']['id'])); ?>
+		</td>
 		<td><?php echo h($game['Game']['isPending']); ?>&nbsp;</td>
-		<td><?php echo h($game['Game']['numberOfPlayers']); ?>&nbsp;</td>
 		<td><?php echo h($game['Game']['numberMaximumOfPlayers']); ?>&nbsp;</td>
 		<td><?php echo h($game['Game']['currentPlayer']); ?>&nbsp;</td>
-		<td><?php echo h($game['Game']['hostPlayer']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($game['Player']['id'], array('controller' => 'players', 'action' => 'view', $game['Player']['id'])); ?>
+		</td>
 		<td><?php echo h($game['Game']['created']); ?>&nbsp;</td>
 		<td><?php echo h($game['Game']['modified']); ?>&nbsp;</td>
 		<td class="actions">
@@ -58,6 +60,10 @@
 		<li><?php echo $this->Html->link(__('New Game'), array('action' => 'add')); ?></li>
 		<li><?php echo $this->Html->link(__('List Difficulties'), array('controller' => 'difficulties', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Difficulty'), array('controller' => 'difficulties', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Game Types'), array('controller' => 'game_types', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Game Type'), array('controller' => 'game_types', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Players'), array('controller' => 'players', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Player'), array('controller' => 'players', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Game Cards'), array('controller' => 'game_cards', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Game Card'), array('controller' => 'game_cards', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Game Players'), array('controller' => 'game_players', 'action' => 'index')); ?> </li>

@@ -56,7 +56,9 @@ class GamesController extends AppController {
 			}
 		}
 		$difficulties = $this->Game->Difficulty->find('list');
-		$this->set(compact('difficulties'));
+		$gameTypes = $this->Game->GameType->find('list');
+		$players = $this->Game->Player->find('list');
+		$this->set(compact('difficulties', 'gameTypes', 'players'));
 	}
 
 /**
@@ -82,7 +84,9 @@ class GamesController extends AppController {
 			$this->request->data = $this->Game->find('first', $options);
 		}
 		$difficulties = $this->Game->Difficulty->find('list');
-		$this->set(compact('difficulties'));
+		$gameTypes = $this->Game->GameType->find('list');
+		$players = $this->Game->Player->find('list');
+		$this->set(compact('difficulties', 'gameTypes', 'players'));
 	}
 
 /**

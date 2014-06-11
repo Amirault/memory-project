@@ -3,7 +3,7 @@
 	<table cellpadding="0" cellspacing="0">
 	<tr>
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
-			<th><?php echo $this->Paginator->sort('nom'); ?></th>
+			<th><?php echo $this->Paginator->sort('name'); ?></th>
 			<th><?php echo $this->Paginator->sort('numberOfPairs'); ?></th>
 			<th><?php echo $this->Paginator->sort('CoefficientForPoint'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -13,7 +13,7 @@
 	<?php foreach ($difficulties as $difficulty): ?>
 	<tr>
 		<td><?php echo h($difficulty['Difficulty']['id']); ?>&nbsp;</td>
-		<td><?php echo h($difficulty['Difficulty']['nom']); ?>&nbsp;</td>
+		<td><?php echo h($difficulty['Difficulty']['name']); ?>&nbsp;</td>
 		<td><?php echo h($difficulty['Difficulty']['numberOfPairs']); ?>&nbsp;</td>
 		<td><?php echo h($difficulty['Difficulty']['CoefficientForPoint']); ?>&nbsp;</td>
 		<td><?php echo h($difficulty['Difficulty']['created']); ?>&nbsp;</td>

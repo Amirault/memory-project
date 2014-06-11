@@ -6,9 +6,9 @@
 			<?php echo h($difficulty['Difficulty']['id']); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('Nom'); ?></dt>
+		<dt><?php echo __('Name'); ?></dt>
 		<dd>
-			<?php echo h($difficulty['Difficulty']['nom']); ?>
+			<?php echo h($difficulty['Difficulty']['name']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('NumberOfPairs'); ?></dt>
@@ -52,12 +52,11 @@
 		<th><?php echo __('Id'); ?></th>
 		<th><?php echo __('Difficulty Id'); ?></th>
 		<th><?php echo __('Name'); ?></th>
-		<th><?php echo __('TypeOfGame'); ?></th>
+		<th><?php echo __('GameType Id'); ?></th>
 		<th><?php echo __('IsPending'); ?></th>
-		<th><?php echo __('NumberOfPlayers'); ?></th>
 		<th><?php echo __('NumberMaximumOfPlayers'); ?></th>
 		<th><?php echo __('CurrentPlayer'); ?></th>
-		<th><?php echo __('HostPlayer'); ?></th>
+		<th><?php echo __('Player Id'); ?></th>
 		<th><?php echo __('Created'); ?></th>
 		<th><?php echo __('Modified'); ?></th>
 		<th class="actions"><?php echo __('Actions'); ?></th>
@@ -67,12 +66,11 @@
 			<td><?php echo $game['id']; ?></td>
 			<td><?php echo $game['difficulty_id']; ?></td>
 			<td><?php echo $game['name']; ?></td>
-			<td><?php echo $game['typeOfGame']; ?></td>
+			<td><?php echo $game['gameType_id']; ?></td>
 			<td><?php echo $game['isPending']; ?></td>
-			<td><?php echo $game['numberOfPlayers']; ?></td>
 			<td><?php echo $game['numberMaximumOfPlayers']; ?></td>
 			<td><?php echo $game['currentPlayer']; ?></td>
-			<td><?php echo $game['hostPlayer']; ?></td>
+			<td><?php echo $game['player_id']; ?></td>
 			<td><?php echo $game['created']; ?></td>
 			<td><?php echo $game['modified']; ?></td>
 			<td class="actions">

@@ -5,7 +5,8 @@
 			<th><?php echo $this->Paginator->sort('id'); ?></th>
 			<th><?php echo $this->Paginator->sort('player_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('game_id'); ?></th>
-			<th><?php echo $this->Paginator->sort('masterCard'); ?></th>
+			<th><?php echo $this->Paginator->sort('card_id'); ?></th>
+			<th><?php echo $this->Paginator->sort('points'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -19,7 +20,10 @@
 		<td>
 			<?php echo $this->Html->link($gamePlayer['Game']['name'], array('controller' => 'games', 'action' => 'view', $gamePlayer['Game']['id'])); ?>
 		</td>
-		<td><?php echo h($gamePlayer['GamePlayer']['masterCard']); ?>&nbsp;</td>
+		<td>
+			<?php echo $this->Html->link($gamePlayer['Card']['id'], array('controller' => 'cards', 'action' => 'view', $gamePlayer['Card']['id'])); ?>
+		</td>
+		<td><?php echo h($gamePlayer['GamePlayer']['points']); ?>&nbsp;</td>
 		<td><?php echo h($gamePlayer['GamePlayer']['created']); ?>&nbsp;</td>
 		<td><?php echo h($gamePlayer['GamePlayer']['modified']); ?>&nbsp;</td>
 		<td class="actions">
@@ -52,5 +56,7 @@
 		<li><?php echo $this->Html->link(__('New Player'), array('controller' => 'players', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Games'), array('controller' => 'games', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Game'), array('controller' => 'games', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Cards'), array('controller' => 'cards', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Card'), array('controller' => 'cards', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

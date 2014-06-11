@@ -3,7 +3,7 @@
 	<fieldset>
 		<legend><?php echo __('Add Difficulty'); ?></legend>
 	<?php
-		echo $this->Form->input('nom');
+		echo $this->Form->input('name');
 		echo $this->Form->input('numberOfPairs');
 		echo $this->Form->input('CoefficientForPoint');
 	?>

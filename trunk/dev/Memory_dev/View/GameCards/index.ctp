@@ -7,6 +7,8 @@
 			<th><?php echo $this->Paginator->sort('card_id'); ?></th>
 			<th><?php echo $this->Paginator->sort('position_x'); ?></th>
 			<th><?php echo $this->Paginator->sort('position_y'); ?></th>
+			<th><?php echo $this->Paginator->sort('isFlippedUp'); ?></th>
+			<th><?php echo $this->Paginator->sort('isGone'); ?></th>
 			<th><?php echo $this->Paginator->sort('created'); ?></th>
 			<th><?php echo $this->Paginator->sort('modified'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
@@ -22,6 +24,8 @@
 		</td>
 		<td><?php echo h($gameCard['GameCard']['position_x']); ?>&nbsp;</td>
 		<td><?php echo h($gameCard['GameCard']['position_y']); ?>&nbsp;</td>
+		<td><?php echo h($gameCard['GameCard']['isFlippedUp']); ?>&nbsp;</td>
+		<td><?php echo h($gameCard['GameCard']['isGone']); ?>&nbsp;</td>
 		<td><?php echo h($gameCard['GameCard']['created']); ?>&nbsp;</td>
 		<td><?php echo h($gameCard['GameCard']['modified']); ?>&nbsp;</td>
 		<td class="actions">

@@ -17,8 +17,10 @@ class GamePlayersControllerTest extends ControllerTestCase {
 		'app.player',
 		'app.game',
 		'app.difficulty',
+		'app.gametype',
 		'app.game_card',
-		'app.card'
+		'app.card',
+		'app.collection'
 	);
 
 /**

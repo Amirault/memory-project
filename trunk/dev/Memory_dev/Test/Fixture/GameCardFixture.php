@@ -16,6 +16,8 @@ class GameCardFixture extends CakeTestFixture {
 		'card_id' => array('type' => 'integer', 'null' => false, 'default' => null, 'key' => 'index'),
 		'position_x' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'position_y' => array('type' => 'integer', 'null' => false, 'default' => null),
+		'isFlippedUp' => array('type' => 'boolean', 'null' => true, 'default' => '0'),
+		'isGone' => array('type' => 'boolean', 'null' => true, 'default' => '0'),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
@@ -38,8 +40,10 @@ class GameCardFixture extends CakeTestFixture {
 			'card_id' => 1,
 			'position_x' => 1,
 			'position_y' => 1,
-			'created' => '2014-06-11 01:46:58',
-			'modified' => '2014-06-11 01:46:58'
+			'isFlippedUp' => 1,
+			'isGone' => 1,
+			'created' => '2014-06-11 10:56:43',
+			'modified' => '2014-06-11 10:56:43'
 		),
 	);
 

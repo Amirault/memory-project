@@ -5,7 +5,8 @@
 	<?php
 		echo $this->Form->input('player_id');
 		echo $this->Form->input('game_id');
-		echo $this->Form->input('masterCard');
+		echo $this->Form->input('card_id');
+		echo $this->Form->input('points');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
@@ -19,5 +20,7 @@
 		<li><?php echo $this->Html->link(__('New Player'), array('controller' => 'players', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Games'), array('controller' => 'games', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Game'), array('controller' => 'games', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Cards'), array('controller' => 'cards', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Card'), array('controller' => 'cards', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

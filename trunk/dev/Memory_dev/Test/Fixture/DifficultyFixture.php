@@ -12,7 +12,7 @@ class DifficultyFixture extends CakeTestFixture {
  */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'key' => 'primary'),
-		'nom' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'name' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'numberOfPairs' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'CoefficientForPoint' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
@@ -31,11 +31,11 @@ class DifficultyFixture extends CakeTestFixture {
 	public $records = array(
 		array(
 			'id' => 1,
-			'nom' => 'Lorem ipsum dolor sit amet',
+			'name' => 'Lorem ipsum dolor sit amet',
 			'numberOfPairs' => 1,
 			'CoefficientForPoint' => 1,
-			'created' => '2014-06-11 01:46:58',
-			'modified' => '2014-06-11 01:46:58'
+			'created' => '2014-06-11 10:56:43',
+			'modified' => '2014-06-11 10:56:43'
 		),
 	);
 

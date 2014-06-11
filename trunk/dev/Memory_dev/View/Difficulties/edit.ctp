@@ -4,7 +4,7 @@
 		<legend><?php echo __('Edit Difficulty'); ?></legend>
 	<?php
 		echo $this->Form->input('id');
-		echo $this->Form->input('nom');
+		echo $this->Form->input('name');
 		echo $this->Form->input('numberOfPairs');
 		echo $this->Form->input('CoefficientForPoint');
 	?>

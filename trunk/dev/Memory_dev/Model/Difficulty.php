@@ -13,7 +13,7 @@ class Difficulty extends AppModel {
  * @var array
  */
 	public $validate = array(
-		'nom' => array(
+		'name' => array(
 			'notEmpty' => array(
 				'rule' => array('notEmpty'),
 				//'message' => 'Your custom message here',

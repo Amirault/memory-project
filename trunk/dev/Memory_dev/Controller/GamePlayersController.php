@@ -57,7 +57,8 @@ class GamePlayersController extends AppController {
 		}
 		$players = $this->GamePlayer->Player->find('list');
 		$games = $this->GamePlayer->Game->find('list');
-		$this->set(compact('players', 'games'));
+		$cards = $this->GamePlayer->Card->find('list');
+		$this->set(compact('players', 'games', 'cards'));
 	}
 
 /**
@@ -84,7 +85,8 @@ class GamePlayersController extends AppController {
 		}
 		$players = $this->GamePlayer->Player->find('list');
 		$games = $this->GamePlayer->Game->find('list');
-		$this->set(compact('players', 'games'));
+		$cards = $this->GamePlayer->Card->find('list');
+		$this->set(compact('players', 'games', 'cards'));
 	}
 
 /**
