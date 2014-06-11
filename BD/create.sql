@@ -83,3 +83,7 @@ CREATE TABLE IF NOT EXISTS `game_cards` (
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
 );
+
+INSERT INTO `gametypes` (`id`, `name`) VALUES
+(1, 'Arcade'),
+(2, 'Versus');
