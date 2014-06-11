@@ -231,28 +231,37 @@
 				<script>
 				$(function() {
 				$('.countdown').html(10);
-				var doUpdate = function() {
-				$('.countdown').each(function() {
+			  // Mise à jour du temps toutes les secondes
+			  var doUpdate = setInterval(
+											function() {
+											$('.countdown').each(function() {
 				  var count = parseInt($(this).html());
 				  if (count != 0) {
 					$(this).html(count - 1);
+						
 				  }
 				  else if (count == 0)
 				  {
 					nbClick = 3;
+					waitPlayer();
+					clearInterval(doUpdate);
 				  }
 				});
-			  };
-			  // Mise à jour du temps toutes les secondes
-			  setInterval(doUpdate, 1000);
+				},1000
+				);
+			// var setInterval(doUpdate, 1000);
 			  
 					new WOW().init();
 				  $(".card").height($(".card").width());// Mise en forme des cartes (largeur = longueur)
 				  
 				  var nbClick = 0;
+				  var nbPairTotal = 5;
+				  var nbPair = 0 ;// initialisation importante
 				  var firstCard = {};
+				  var secondCard = {};
+				  var playerWait;
 				  $('.card').click(function(){
-					// si la zone ne correspond pas à une zone deja trouvé $
+					// si la zone ne correspond pas à une zone deja trouvé
 					if ($(this).attr('found') == 'false'){
 						switch (nbClick){
 							case 0 :// Premier click
@@ -260,22 +269,71 @@
 								firstCard['ligne'] = $(this).attr('ligne');
 								firstCard['colonne'] = $(this).attr('colonne');
 								firstCard['idPair'] = $(this).attr('idPair');
+								firstCard['set'] = true;
 								nbClick ++;
+								// requête ajax  première carte retournée
 								break;
 							case 1 :// Second click
 								// Test Carte non cliqué
 								if ((firstCard['ligne'] != $(this).attr('ligne')) || (firstCard['colonne'] !=  $(this).attr('colonne'))){
+									secondCard['ligne'] = $(this).attr('ligne');
+									secondCard['colonne'] = $(this).attr('colonne');
+									secondCard['idPair'] = $(this).attr('idPair');
+									secondCard['set'] = true;
 									// Test si c'est une paire
 									$(this).addClass('hover'); 
 									if (($(this).attr('idPair') == firstCard['idPair'])){
 										$(".card[idPaire='"+$(this).attr('idPair')+"']").attr( 'found','true');
 										nbClick = 0; // le joueur peut rejouer car il a trouvé une paire
 										$('.countdown').html(10);
+										secondCard['set'] = false;
+										firstCard['set'] = false;
+										nbPair ++;
+										// Test si toute les cartes ont été retournéeq
+										if ( nbPair == nbPairTotal){
+											// On affiche Bravo et perdu sur les autres joueur puis le tableau des scores
+											//alert('bravo');
+											$.unblockUI();
+											
+											$('#modalWin').modal('show');
+											//return false:
+											// requete ajax pour informer de la fin de la partie
+										}
+										// requête ajax seconde carte retournée
 										break;
 									}
 									else
 									{ 
-										// On passe au joueur suivant
+									// On bloque le joueur (patiente) car c'est au joueur suivant de jouer
+										// On attends un peu avant de retourner les cartes puis on donne la main au joueur suivant
+										var playerWait = setInterval(
+											function() {
+												if (playerWait){
+												   clearInterval(playerWait);
+													// On retourne les cartes
+													$(".card[ligne='"+firstCard['ligne']+"'][colonne='"+firstCard['colonne']+"']").removeClass('hover'); 
+													$(".card[ligne='"+secondCard['ligne']+"'][colonne='"+secondCard['colonne']+"']").removeClass('hover');
+													 $.blockUI({ 
+													message: '<h1>Veuillez patienter !</h1>',	
+													css: { 
+														border: 'none',										
+														padding: '15px', 
+														bottom : '10px',
+														left: '25%',
+														right: '',
+														top: '',
+														backgroundColor: '#000', 
+														'-webkit-border-radius': '10px', 
+														'-moz-border-radius': '10px', 
+														opacity: 0.5, 
+														color: '#fff'													
+													} });
+													//$(this).addClass('hover'); 
+													// requête Ajax On passe au joueur suivant
+												}
+											}
+										, 1000);
+										
 									}
 								}
 								nbClick ++;
@@ -286,6 +344,39 @@
 					}
 					return false;
 				  });
+				  function waitPlayer(){
+					var playerWait = setInterval(
+						function() {
+							if (playerWait){
+							   clearInterval(playerWait);
+								if (firstCard['set'] == true){
+								   // On retourne les cartes
+									$(".card[ligne='"+firstCard['ligne']+"'][colonne='"+firstCard['colonne']+"']").removeClass('hover'); 
+								}
+								if (secondCard['set'] == true){
+									$(".card[ligne='"+secondCard['ligne']+"'][colonne='"+secondCard['colonne']+"']").removeClass('hover');
+								}
+								 $.blockUI({ 
+								message: '<h1>Veuillez patienter !</h1>',	
+								css: { 
+									border: 'none',										
+									padding: '15px', 
+									bottom : '10px',
+									left: '25%',
+									right: '',
+									top: '',
+									backgroundColor: '#000', 
+									'-webkit-border-radius': '10px', 
+									'-moz-border-radius': '10px', 
+									opacity: 0.5, 
+									color: '#fff'													
+								} });
+								//$(this).addClass('hover'); 
+								// requête Ajax On passe au joueur suivant
+							}
+						}
+					, 1000);
+					}
 				});
 				</script>
 				<div class="span3" style="height:100%;position:absolute;right:0;top:0;margin-left:2%;border-left:2px solid black;text-align:center">
@@ -314,6 +405,35 @@
 		</div>
 		<!--
 		<div id="modalStart" class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal-header">
+				<h3>Bienvenue, veuillez vous identifier :</h3>
+			</div>
+			<form id="formConnexion" name="formConnexion" >
+				<div class="modal-body">
+					<div class="row-fluid">
+						<div class="span1"></div>
+						<div class="span4">
+								<input id="pseudo" name="pseudo" placeholder="Votre Pseudo" class="input-xlarge"  type="text" required/>
+								<input id="mdp" name="mdp" placeholder="Votre mot de passe" class="input-xlarge"  type="password" required/>
+								<a href="#"  id="activeInscription">S'inscrire</a>
+								ou
+								<a href="#" id="activeConnexion">Se connecter</a>
+								<input id="validMdp" class="hide" name="validMdp" placeholder="Confirmer le mot de passe" class="input-xlarge"  type="password" required/> 
+						</div>
+						<div class="span1"></div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="row-fluid">
+						<div class="span1"></div>
+						<div class="span10" style="text-align:center">
+							<button  class="btn" id="validForm" value="connexion">Connexion</button>
+						</div>
+						<div class="span1"></div>
+					</div>
+				</div>
+			</form>
+		</div><div id="modalStart" class="modal fade" tabindex="-1" role="dialog">
 			<div class="modal-header">
 				<h3>Bienvenue, veuillez vous identifier :</h3>
 			</div>
@@ -483,9 +603,8 @@
 											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
 											</tr>
 											</tbody>
-											</table>
-											</div>
-								
+										</table>
+								</div>
 							</div>
 						  </div>
 						</div>
@@ -624,3 +743,66 @@ $(function(){
 	});
 });
 </script>
+
+<div id="modalWin" class="modal hide fade" >
+	<div class="modal-header">
+	<h3> Bravo, vous avez gagne! </h3>
+	</div>
+	<div class="modal-body">	
+		<div class="table-responsive">
+			<table class="table table-small-font table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Joueur</th>
+						<th>Score</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr class="active">
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="success">
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="active">
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="success">
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="active">
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="success">
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="active">
+						<td></td>
+						<td></td>
+					</tr>
+					<tr class="success">
+						<td></td>
+						<td></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="row-fluid">
+			<div class="span1"></div>
+			<div class="span10" style="text-align:center">
+				<button  class="btn" id="validForm" value="connexion">Connexion</button>
+			</div>
+			<div class="span1"></div>
+		</div>
+	</div>
+</div>
+
+		
