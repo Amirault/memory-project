@@ -2,31 +2,201 @@
  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
 	<head>
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="css/animate.css" rel="stylesheet">
 		<script src='bootstrap/js/jquery.js'></script>
 		<script src='bootstrap/js/bootstrap.js'></script>
 		<script src='bootstrap/js/blockUI.js'></script>
+		<script src='bootstrap/js/wow.min.js'></script>
 		<title>Memory</title>
+		<style type="text/css">
+
+
+		.flip-container {
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -o-perspective: 1000;
+    perspective: 1000;
+}
+
+.flip-container, .flip-front, .flip-back {
+     height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.flipper {
+    -moz-transform: perspective(1000px);
+    -moz-transform-style: preserve-3d;
+
+    position: relative;
+}
+
+.flip-front, .flip-back {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-transition: 0.6s;
+    -webkit-transform-style: preserve-3d;
+
+    -moz-transition: 0.6s;
+    -moz-transform-style: preserve-3d;
+
+    -o-transition: 0.6s;
+    -o-transform-style: preserve-3d;
+
+    -ms-transition: 0.6s;
+    -ms-transform-style: preserve-3d;
+
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.flip-back {
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.flip-container.hover .flip-back, .flip-container.hover .flip-back {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.flip-container.hover .flip-front, .flip-container.hover .flip-front {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+
+.flip-front {
+    z-index: 2;
+}
+		</style>
 	</head>
 	<body>
 		<div id="JEU" style="height:100%">
-			<div class="row-fluid" style="height:100%;position:absolute;left:0;top:0;" >
+			<div class="row-fluid" style="height:100%; >
 				<div class="span9">
-					<div class="row-fluid" style="padding:5%;height:100%;position:absolute;left:0;top:0;">
+					<div class="row-fluid wow bounceInUp" style="padding:5%;height:100%;">
 						<!-- ZONE DE JEU -->
 						<div class="row-fluid">
-							<div class="span1 card" style="border:1px solid black"></div>
-							<div class="span1 card" style="border:1px solid black"></div>
-							<div class="span1 card" style="border:1px solid black"></div>
-							<div class="span1 card" style="border:1px solid black"></div>
-							<div class="span1 card" style="border:1px solid black"></div>
-							<div class="span1 card" style="border:1px solid black"></div>
-							<div class="span1 card" style="border:1px solid black"></div>
-							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card flip-container" ligne="1" colonne="1" found="false" idPair="3" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/tony.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="2" found="false" idPair="2" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/eyal.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="3"  found="false" idPair="0" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/sof.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container"  ligne="1" colonne="4" found="false" idPair="1" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/Dat.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="5" found="false" idPair="0" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/sof.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="6" found="false" idPair="1" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/Dat.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="7" found="false" idPair="2" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/eyal.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="8" found="false"  idPair="3" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/tony.jpg" />
+									</div>
+								</div>
+							</div>
 						</div>
 						<br/>
 						<div class="row-fluid">
-							<div class="span1 card" style="border:1px solid black"></div>
-							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card flip-container" ligne="2" colonne="1" found="false" idPair="4" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/van.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="2" colonne="2" found="false"  idPair="4" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/van.jpg" />
+									</div>
+								</div>
+							</div>
 							<div class="span1 card" style="border:1px solid black"></div>
 							<div class="span1 card" style="border:1px solid black"></div>
 							<div class="span1 card" style="border:1px solid black"></div>
@@ -60,14 +230,69 @@
 				</div>
 				<script>
 				$(function() {
-				  $(".card").height($(".card").width());
+				$('.countdown').html(10);
+				var doUpdate = function() {
+				$('.countdown').each(function() {
+				  var count = parseInt($(this).html());
+				  if (count != 0) {
+					$(this).html(count - 1);
+				  }
+				  else if (count == 0)
+				  {
+					nbClick = 3;
+				  }
+				});
+			  };
+			  // Mise à jour du temps toutes les secondes
+			  setInterval(doUpdate, 1000);
+			  
+					new WOW().init();
+				  $(".card").height($(".card").width());// Mise en forme des cartes (largeur = longueur)
+				  
+				  var nbClick = 0;
+				  var firstCard = {};
+				  $('.card').click(function(){
+					// si la zone ne correspond pas à une zone deja trouvé $
+					if ($(this).attr('found') == 'false'){
+						switch (nbClick){
+							case 0 :// Premier click
+								$(this).addClass('hover');	
+								firstCard['ligne'] = $(this).attr('ligne');
+								firstCard['colonne'] = $(this).attr('colonne');
+								firstCard['idPair'] = $(this).attr('idPair');
+								nbClick ++;
+								break;
+							case 1 :// Second click
+								// Test Carte non cliqué
+								if ((firstCard['ligne'] != $(this).attr('ligne')) || (firstCard['colonne'] !=  $(this).attr('colonne'))){
+									// Test si c'est une paire
+									$(this).addClass('hover'); 
+									if (($(this).attr('idPair') == firstCard['idPair'])){
+										$(".card[idPaire='"+$(this).attr('idPair')+"']").attr( 'found','true');
+										nbClick = 0; // le joueur peut rejouer car il a trouvé une paire
+										$('.countdown').html(10);
+										break;
+									}
+									else
+									{ 
+										// On passe au joueur suivant
+									}
+								}
+								nbClick ++;
+								break;
+							default :
+							break;
+						}
+					}
+					return false;
+				  });
 				});
 				</script>
-				<div class="span3" style="height:100%;border-left:2px solid black;text-align:center">
+				<div class="span3" style="height:100%;position:absolute;right:0;top:0;margin-left:2%;border-left:2px solid black;text-align:center">
 					<!-- Zone information partie -->
 					<div class="row-fluid" style="height:50%;">
 						<div class="row-fluid">
-							<p> Temps : </p>
+							<p> Temps : <span class="countdown"></span> </p>
 						</div>
 						<div class="row-fluid">
 							<p> Score : </p>
