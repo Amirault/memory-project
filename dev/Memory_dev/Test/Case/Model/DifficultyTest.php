@@ -14,7 +14,13 @@ class DifficultyTest extends CakeTestCase {
  */
 	public $fixtures = array(
 		'app.difficulty',
-		'app.game'
+		'app.game',
+		'app.gametype',
+		'app.game_card',
+		'app.card',
+		'app.collection',
+		'app.game_player',
+		'app.player'
 	);
 
 /**

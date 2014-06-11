@@ -38,8 +38,8 @@ class PlayerFixture extends CakeTestFixture {
 			'point' => 1,
 			'numberOfGames' => 1,
 			'numberOfVictories' => 1,
-			'created' => '2014-06-11 01:47:00',
-			'modified' => '2014-06-11 01:47:00'
+			'created' => '2014-06-11 10:56:45',
+			'modified' => '2014-06-11 10:56:45'
 		),
 	);
 

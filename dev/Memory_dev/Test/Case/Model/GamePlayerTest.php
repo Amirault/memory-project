@@ -15,7 +15,12 @@ class GamePlayerTest extends CakeTestCase {
 	public $fixtures = array(
 		'app.game_player',
 		'app.player',
-		'app.game'
+		'app.game',
+		'app.difficulty',
+		'app.gametype',
+		'app.game_card',
+		'app.card',
+		'app.collection'
 	);
 
 /**

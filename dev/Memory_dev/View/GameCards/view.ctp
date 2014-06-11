@@ -26,6 +26,16 @@
 			<?php echo h($gameCard['GameCard']['position_y']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('IsFlippedUp'); ?></dt>
+		<dd>
+			<?php echo h($gameCard['GameCard']['isFlippedUp']); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('IsGone'); ?></dt>
+		<dd>
+			<?php echo h($gameCard['GameCard']['isGone']); ?>
+			&nbsp;
+		</dd>
 		<dt><?php echo __('Created'); ?></dt>
 		<dd>
 			<?php echo h($gameCard['GameCard']['created']); ?>

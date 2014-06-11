@@ -5,6 +5,7 @@ App::uses('AppModel', 'Model');
  *
  * @property Player $Player
  * @property Game $Game
+ * @property Card $Card
  */
 class GamePlayer extends AppModel {
 
@@ -54,6 +55,13 @@ class GamePlayer extends AppModel {
 		'Game' => array(
 			'className' => 'Game',
 			'foreignKey' => 'game_id',
+			'conditions' => '',
+			'fields' => '',
+			'order' => ''
+		),
+		'Card' => array(
+			'className' => 'Card',
+			'foreignKey' => 'card_id',
 			'conditions' => '',
 			'fields' => '',
 			'order' => ''

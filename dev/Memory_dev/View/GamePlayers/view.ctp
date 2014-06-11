@@ -16,9 +16,14 @@
 			<?php echo $this->Html->link($gamePlayer['Game']['name'], array('controller' => 'games', 'action' => 'view', $gamePlayer['Game']['id'])); ?>
 			&nbsp;
 		</dd>
-		<dt><?php echo __('MasterCard'); ?></dt>
+		<dt><?php echo __('Card'); ?></dt>
 		<dd>
-			<?php echo h($gamePlayer['GamePlayer']['masterCard']); ?>
+			<?php echo $this->Html->link($gamePlayer['Card']['id'], array('controller' => 'cards', 'action' => 'view', $gamePlayer['Card']['id'])); ?>
+			&nbsp;
+		</dd>
+		<dt><?php echo __('Points'); ?></dt>
+		<dd>
+			<?php echo h($gamePlayer['GamePlayer']['points']); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Created'); ?></dt>
@@ -44,5 +49,7 @@
 		<li><?php echo $this->Html->link(__('New Player'), array('controller' => 'players', 'action' => 'add')); ?> </li>
 		<li><?php echo $this->Html->link(__('List Games'), array('controller' => 'games', 'action' => 'index')); ?> </li>
 		<li><?php echo $this->Html->link(__('New Game'), array('controller' => 'games', 'action' => 'add')); ?> </li>
+		<li><?php echo $this->Html->link(__('List Cards'), array('controller' => 'cards', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Card'), array('controller' => 'cards', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

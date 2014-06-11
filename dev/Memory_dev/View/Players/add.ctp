@@ -17,5 +17,7 @@
 	<ul>
 
 		<li><?php echo $this->Html->link(__('List Players'), array('action' => 'index')); ?></li>
+		<li><?php echo $this->Html->link(__('List Games'), array('controller' => 'games', 'action' => 'index')); ?> </li>
+		<li><?php echo $this->Html->link(__('New Game'), array('controller' => 'games', 'action' => 'add')); ?> </li>
 	</ul>
 </div>

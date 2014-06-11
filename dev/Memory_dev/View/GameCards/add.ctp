@@ -7,6 +7,8 @@
 		echo $this->Form->input('card_id');
 		echo $this->Form->input('position_x');
 		echo $this->Form->input('position_y');
+		echo $this->Form->input('isFlippedUp');
+		echo $this->Form->input('isGone');
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
