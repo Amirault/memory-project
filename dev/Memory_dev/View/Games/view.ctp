@@ -8,7 +8,7 @@
 		</dd>
 		<dt><?php echo __('Difficulty'); ?></dt>
 		<dd>
-			<?php echo $this->Html->link($game['Difficulty']['name'], array('controller' => 'difficulties', 'action' => 'view', $game['Difficulty']['id'])); ?>
+			<?php echo $this->Html->link($game['Difficulty']['id'], array('controller' => 'difficulties', 'action' => 'view', $game['Difficulty']['id'])); ?>
 			&nbsp;
 		</dd>
 		<dt><?php echo __('Name'); ?></dt>
