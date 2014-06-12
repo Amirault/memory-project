@@ -441,7 +441,7 @@
 			<div class="row-fluid">
 				<div class="span1"></div>
 				<div class="span10" style="text-align:center">
-					<button  class="btn btn-primary validEndGame" value="lancer" disabled="disabled">Patientez ...</button>
+					<button  class="btn btn-primary" id="validLaunchGame" disabled="disabled">Patientez ...</button>
 				</div>
 				<div class="span1"></div>
 			</div>
