@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   `point` int(11) DEFAULT 0,
   `numberOfGames` int(11) DEFAULT 0,
   `numberOfVictories` int(11) DEFAULT 0,
+  UNIQUE KEY `login` (`login`),
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
 );

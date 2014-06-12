@@ -12,7 +12,7 @@ class PlayerFixture extends CakeTestFixture {
  */
 	public $fields = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'key' => 'primary'),
-		'login' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
+		'login' => array('type' => 'string', 'null' => false, 'default' => null, 'key' => 'unique', 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'password' => array('type' => 'string', 'null' => false, 'default' => null, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
 		'point' => array('type' => 'integer', 'null' => true, 'default' => '0'),
 		'numberOfGames' => array('type' => 'integer', 'null' => true, 'default' => '0'),
@@ -20,7 +20,8 @@ class PlayerFixture extends CakeTestFixture {
 		'created' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'modified' => array('type' => 'datetime', 'null' => true, 'default' => null),
 		'indexes' => array(
-			'PRIMARY' => array('column' => 'id', 'unique' => 1)
+			'PRIMARY' => array('column' => 'id', 'unique' => 1),
+			'login' => array('column' => 'login', 'unique' => 1)
 		),
 		'tableParameters' => array('charset' => 'latin1', 'collate' => 'latin1_swedish_ci', 'engine' => 'MyISAM')
 	);
@@ -38,8 +39,8 @@ class PlayerFixture extends CakeTestFixture {
 			'point' => 1,
 			'numberOfGames' => 1,
 			'numberOfVictories' => 1,
-			'created' => '2014-06-11 10:56:45',
-			'modified' => '2014-06-11 10:56:45'
+			'created' => '2014-06-12 01:59:44',
+			'modified' => '2014-06-12 01:59:44'
 		),
 	);
 

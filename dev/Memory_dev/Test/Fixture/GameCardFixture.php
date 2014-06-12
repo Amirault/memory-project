@@ -42,8 +42,8 @@ class GameCardFixture extends CakeTestFixture {
 			'position_y' => 1,
 			'isFlippedUp' => 1,
 			'isGone' => 1,
-			'created' => '2014-06-11 10:56:43',
-			'modified' => '2014-06-11 10:56:43'
+			'created' => '2014-06-12 01:59:42',
+			'modified' => '2014-06-12 01:59:42'
 		),
 	);
 
