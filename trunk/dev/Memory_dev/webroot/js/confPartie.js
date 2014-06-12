@@ -107,8 +107,25 @@ $(function(){
 
 				}
 		});
-	setInterval(function(){refreshPlayers(game_id)},1000);
+		setInterval(function(){refreshPlayers(game_id)},1000);
 	});
+	
+	
+	function refreshGame(game_id)
+	{
+		console.debug(game_id);
+		$.ajax({
+		async: false,
+		dataType: "json",
+		type: "POST",
+		url: "games/getGame",
+		data: ({gameId:game_id}),
+		success: function (data, textStatus)
+				{
+
+				}
+			});	
+	}
 	
 	function refreshPlayers(game_id)
 	{
