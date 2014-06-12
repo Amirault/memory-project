@@ -1,5 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
  <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+     <meta charset="utf-8">
 	<head>
 		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
 		<link href="css/animate.css" rel="stylesheet">
@@ -94,6 +95,7 @@
 					<div class="row-fluid wow bounceInUp" style="padding:5%;height:100%;">
 						<!-- ZONE DE JEU -->
 						<div class="row-fluid">
+						<div class="span2"></div>
 							<div class="span1 card flip-container" ligne="1" colonne="1" found="false"  style="position:relative;border:1px solid black; overflow:hidden">
 								<div class="flipper">
 									<div class="flip-front">
@@ -161,17 +163,35 @@
 				<script>
 				$(function() {
 				new WOW().init();
+				var compt = 1;
 				  $(".card").height($(".card").width());// Mise en forme des cartes (largeur = longueur)
 				  $(".card").mouseover(function(){
-					$(".card").addClass('hover');	
-				  });
+					$(".card").removeClass('hover');
+					setInterval(function(){
+						$(".card").each(function() {
+							var obj = this;
+							console.debug(obj);
+							compt ++;
+							setInterval(function(){$(obj).addClass('hover');}, compt*500);
+						});
+					}, 2000);
+				});
 				});
 				
 				</script>
 				
 			</div>
 		</div>
-		</div> <button id="accueilStart" class="btn btn-success btn-large"> Start </button>
+		<div style="text-align:center;"> <h1>Avez-vous une mémoire d'éléphant ou de poisson?</h1> </div>
+		 <div class="row-fluid"  >
+			<div class="span2"></div>
+			<div class="span3">
+			<img src="img/Dumbo-HQ.png" /></div>
+			<div class="span2" style="font-size:30px; vertical-align: middle;padding-top:10%; text-align:center; font:Helvetica;">VS</div>
+			<div class="span3">
+			<img src="img/Dory-FN.png" /></div>
+			<div class="span2"></div>
+		</div> <center><button id="accueilStart" class="btn btn-success btn-large">  Start </button></center>
 		
 	</body>
 </html>
