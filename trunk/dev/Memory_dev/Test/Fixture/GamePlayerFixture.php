@@ -39,8 +39,8 @@ class GamePlayerFixture extends CakeTestFixture {
 			'game_id' => 1,
 			'card_id' => 1,
 			'points' => 1,
-			'created' => '2014-06-11 10:56:44',
-			'modified' => '2014-06-11 10:56:44'
+			'created' => '2014-06-12 01:59:42',
+			'modified' => '2014-06-12 01:59:42'
 		),
 	);
 

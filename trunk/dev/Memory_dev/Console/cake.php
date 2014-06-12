@@ -24,7 +24,7 @@ if (function_exists('ini_set')) {
 
 	// the following line differs from its sibling
 	// /app/Console/cake.php
-	ini_set('include_path', $root . PATH_SEPARATOR . 'C:' . $ds . 'Program Files (x86)' . $ds . 'EasyPHP-DevServer-14.1VC9' . $ds . 'data' . $ds . 'localweb' . $ds . 'Memory' . $ds . 'cakephp-cakephp-5e3c362' . $ds . 'lib' . PATH_SEPARATOR . ini_get('include_path'));
+	ini_set('include_path', $root . PATH_SEPARATOR . 'C:' . $ds . 'Program Files (x86)' . $ds . 'EasyPHP-DevServer-14.1VC9' . $ds . 'data' . $ds . 'localweb' . $ds . 'Memory' . $ds . 'dev' . $ds . 'cakephp-cakephp-5e3c362' . $ds . 'lib' . PATH_SEPARATOR . ini_get('include_path'));
 }
 
 if (!include $dispatcher) {

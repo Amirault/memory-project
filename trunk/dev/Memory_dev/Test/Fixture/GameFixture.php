@@ -45,8 +45,8 @@ class GameFixture extends CakeTestFixture {
 			'numberMaximumOfPlayers' => 1,
 			'currentPlayer' => 1,
 			'player_id' => 1,
-			'created' => '2014-06-11 10:56:44',
-			'modified' => '2014-06-11 10:56:44'
+			'created' => '2014-06-12 01:59:43',
+			'modified' => '2014-06-12 01:59:43'
 		),
 	);
 

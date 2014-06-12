@@ -100,4 +100,82 @@ class PlayersController extends AppController {
 			$this->Session->setFlash(__('The player could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+	
+/**
+ * signIn method
+ *
+ * @return void
+ */
+	public function signIn()
+	{
+	
+		$this->autoRender = false;
+		if ($this->request->is('ajax'))
+		{
+			$stt = false;
+			$login = $this->request->data['login'];
+			
+			$options = array('conditions' => array('Player.login' => $login));
+			$nbLogin = $this->Player->find('count', $options);
+			
+			if ($nbLogin == 1)
+			{
+				$password = $this->request->data['password'];
+				$options = array('conditions' => array('Player.login' => $login, 'Player.password' => $password));
+				$nbLoginPassword = $this->Player->find('count', $options);
+				if ($nbLoginPassword == 1)
+				{
+					session_start();
+					$_SESSION["login"] = $login;
+					$stt = true;
+					$message = "Bienvenue ".$login." !";
+				}
+				else
+				{
+					$message = "Mot de passe incorrect";
+				}
+			}
+			else
+			{
+				$message = $login." n'est pas encore inscrit !";
+			}
+			
+			echo json_encode(array('status' => $stt,'message'=> $message));
+		}
+	}
+	
+/**
+ * signUp method
+ *
+ * @return void
+ */
+	public function signUp()
+	{
+		$this->autoRender = false;
+		if ($this->request->is('ajax'))
+		{
+			$stt = false;
+			$login = $this->request->data['login'];
+			$options = array('conditions' => array('Player.login' => $login));
+			$nbLogin = $this->Player->find('count', $options);
+			
+			if ($nbLogin == 0)
+			{
+				$password = $this->request->data['password'];
+				$this->Player->create(array('Player.login' => $login,'Player.password'=> $password));
+				$this->Player->save($this->request->data);
+				session_start();
+				$_SESSION["login"] = $login;
+				$stt = true;
+				$message = "Bienvenue ".$login." !";
+			}
+			else
+			{
+				$message = "Pseudo ".$login." est déjà choisi !";
+			}
+			
+			echo json_encode(array('status' => $stt,'message'=> $message));
+		}
+	}
+}

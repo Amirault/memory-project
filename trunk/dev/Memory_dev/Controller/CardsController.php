@@ -55,9 +55,8 @@ class CardsController extends AppController {
 				$this->Session->setFlash(__('The card could not be saved. Please, try again.'));
 			}
 		}
-		$cards = $this->Card->Card->find('list');
 		$collections = $this->Card->Collection->find('list');
-		$this->set(compact('cards', 'collections'));
+		$this->set(compact('collections'));
 	}
 
 /**
@@ -82,9 +81,8 @@ class CardsController extends AppController {
 			$options = array('conditions' => array('Card.' . $this->Card->primaryKey => $id));
 			$this->request->data = $this->Card->find('first', $options);
 		}
-		$cards = $this->Card->Card->find('list');
 		$collections = $this->Card->Collection->find('list');
-		$this->set(compact('cards', 'collections'));
+		$this->set(compact('collections'));
 	}
 
 /**

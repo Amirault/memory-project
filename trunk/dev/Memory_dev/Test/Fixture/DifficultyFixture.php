@@ -34,8 +34,8 @@ class DifficultyFixture extends CakeTestFixture {
 			'name' => 'Lorem ipsum dolor sit amet',
 			'numberOfPairs' => 1,
 			'CoefficientForPoint' => 1,
-			'created' => '2014-06-11 10:56:43',
-			'modified' => '2014-06-11 10:56:43'
+			'created' => '2014-06-12 01:59:42',
+			'modified' => '2014-06-12 01:59:42'
 		),
 	);
 

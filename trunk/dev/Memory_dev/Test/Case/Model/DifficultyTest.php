@@ -16,11 +16,11 @@ class DifficultyTest extends CakeTestCase {
 		'app.difficulty',
 		'app.game',
 		'app.gametype',
+		'app.player',
 		'app.game_card',
 		'app.card',
 		'app.collection',
-		'app.game_player',
-		'app.player'
+		'app.game_player'
 	);
 
 /**

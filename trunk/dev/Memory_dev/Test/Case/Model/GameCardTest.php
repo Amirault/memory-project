@@ -17,8 +17,8 @@ class GameCardTest extends CakeTestCase {
 		'app.game',
 		'app.difficulty',
 		'app.gametype',
-		'app.game_player',
 		'app.player',
+		'app.game_player',
 		'app.card',
 		'app.collection'
 	);

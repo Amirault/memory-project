@@ -1,11 +1,11 @@
 <?php
-App::uses('Game', 'Model');
+App::uses('Gametype', 'Model');
 
 /**
- * Game Test Case
+ * Gametype Test Case
  *
  */
-class GameTest extends CakeTestCase {
+class GametypeTest extends CakeTestCase {
 
 /**
  * Fixtures
@@ -13,14 +13,7 @@ class GameTest extends CakeTestCase {
  * @var array
  */
 	public $fixtures = array(
-		'app.game',
-		'app.difficulty',
-		'app.gametype',
-		'app.player',
-		'app.game_card',
-		'app.card',
-		'app.collection',
-		'app.game_player'
+		'app.gametype'
 	);
 
 /**
@@ -30,7 +23,7 @@ class GameTest extends CakeTestCase {
  */
 	public function setUp() {
 		parent::setUp();
-		$this->Game = ClassRegistry::init('Game');
+		$this->Gametype = ClassRegistry::init('Gametype');
 	}
 
 /**
@@ -39,7 +32,7 @@ class GameTest extends CakeTestCase {
  * @return void
  */
 	public function tearDown() {
-		unset($this->Game);
+		unset($this->Gametype);
 
 		parent::tearDown();
 	}
