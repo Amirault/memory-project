@@ -165,7 +165,7 @@ class GamesController extends AppController {
 			
 			$message =  "La partie ".$gameName." a été créée !";
 			$arr = array('message'=> $message, 'gid'=> $gameId);
-			echo json_encode($this->Game->findById($gameId));
+			echo json_encode($arr);
 		}
 	}
 	
@@ -177,7 +177,7 @@ class GamesController extends AppController {
 		$this->autoRender = false;
 		if ($this->request->is('ajax'))
 		{
-			$options = array('conditions' => array('Game.gameType_id' => 2, 'Game.isPending' => 1));
+			$options = array('conditions' => array('Game.gameType_id' => 2, 'Game.isPending' => 0));
 			$games = $this->Game->find('all', $options);
 
 			echo json_encode($games);
