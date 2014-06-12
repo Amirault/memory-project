@@ -55,7 +55,9 @@ class CardsController extends AppController {
 				$this->Session->setFlash(__('The card could not be saved. Please, try again.'));
 			}
 		}
-		$collections = $this->Card->Collection->find('list');
+	
+
+	$collections = $this->Card->Collection->find('list');
 		$this->set(compact('collections'));
 	}
 
@@ -104,4 +106,6 @@ class CardsController extends AppController {
 			$this->Session->setFlash(__('The card could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+	
+}

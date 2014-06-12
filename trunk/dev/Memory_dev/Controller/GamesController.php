@@ -183,4 +183,17 @@ class GamesController extends AppController {
 			echo json_encode($games);
 		}
 	}
+	
+	/**
+ * getGame method
+ * @return void
+ */
+	public function getGame() {
+		$this->autoRender = false;
+		if ($this->request->is('ajax'))
+		{
+			$games = $this->Game->findById($this->request->data['gameId']);
+			echo json_encode($games);
+		}
+	}
 }
