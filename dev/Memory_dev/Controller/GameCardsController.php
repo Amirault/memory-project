@@ -106,4 +106,14 @@ class GameCardsController extends AppController {
 			$this->Session->setFlash(__('The game card could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+	
+	public function flipCard() {
+		$this->autoRender = false;
+		if ($this->request->is('ajax'))
+		{
+			$this->GameCard->save(array('id'=> $this->request->data['GameCardId'], 'isFlippedUp' =>  $this->request->data['isFlippedUp']));
+		}
+	}
+	
+	}
