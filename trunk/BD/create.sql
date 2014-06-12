@@ -5,9 +5,19 @@ CREATE TABLE IF NOT EXISTS `gameTypes` (
   `modified` datetime DEFAULT NULL
 );
 
+CREATE TABLE IF NOT EXISTS `collections` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+
 CREATE TABLE IF NOT EXISTS `cards` (
   `id` int(10) unsigned AUTO_INCREMENT PRIMARY KEY,
   `name` varchar(255) NOT NULL,
+  `collection_id` int(11) NOT NULL,
   `created` datetime DEFAULT NULL,
   `modified` datetime DEFAULT NULL
 );
@@ -83,6 +93,9 @@ INSERT INTO `gametypes` (`id`, `name`) VALUES
 INSERT INTO `memory_dev`.`difficulties` (`id`, `numberOfPairs`, `CoefficientForPoint`, `created`, `modified`) VALUES (NULL, '8', '1', NULL, NULL);
 INSERT INTO `memory_dev`.`difficulties` (`id`, `numberOfPairs`, `CoefficientForPoint`, `created`, `modified`) VALUES (NULL, '18', '2', NULL, NULL);
 INSERT INTO `memory_dev`.`difficulties` (`id`, `numberOfPairs`, `CoefficientForPoint`, `created`, `modified`) VALUES (NULL, '32', '3', NULL, NULL);
+
+INSERT INTO `collections` (`id`, `name`, `created`, `modified`) VALUES
+(1, 'INFO', '2014-06-12 22:49:32', '2014-06-12 22:49:32');
 
 --
 -- Contenu de la table `cards`
