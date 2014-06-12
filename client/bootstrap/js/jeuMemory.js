@@ -1,67 +1,74 @@
 $(function(){
 // Déclaration des variables global du jeu
-var nbClick = 0;
-var nbPairTotal = 5;
-var nbPair = 0 ;// initialisation importante
-var firstCard = {};
-var secondCard = {};
-var playerWait;
+var nbClick = 0; // Nombre de click sur les cartes
+var nbPairTotal = 5; // Nombre de pair sur la grille
+var nbPair = 0 ;// Nombre de pair trouvé initialisation importante
+var firstCard = {}; // Information sur la première carte cliqué
+var secondCard = {}; // Information sur la seconde carte cliqué
+var playerWait; // Variable pour l'attente a chaque tours
 
 //$(document).ajaxStop($.unblockUI);
-	// Gestion de la page de login et inscription
+
+
+////// Gestion de la page de login et inscription
 	$('#modalStart').modal('show');
 	$('#validMdp').hide();
 	$("#activeInscription").click(function(){
+		// L'utilisateur veut s'incrire
 		$('#validMdp').show();
 		$('#validForm').val('inscription');
-		console.debug($('#validForm').val());
 		return false;
 	});
 	$("#activeConnexion").click(function(){
+		// L'utilisateur veut se connecter
 		$('#validMdp').hide();
 		$('#validForm').val('connexion');
 		console.debug($('#validForm').val());
 		return false;
 	});
 	$("#validForm").click(function(){
-		// requete ajax TODO (validation login server)
+		// Validation du formulaire de login/inscription
 		var pseudo = $("#pseudo").val();
 		var pwd = $("#mdp").val();
-				
 		var connexionValid  = false;
+		
 		if (pseudo.length != 0  && pseudo.length <= 10 && pseudo.length >= 3 && pwd.length != 0 && pwd.length >= 4){
+			// Le pseudo et le mot de passe semble cohérant
 			if ($('#validForm').val() == "inscription"){
 				// Inscription de l'utilisateur
 				var pwdValid = $('#validMdp').val();
 				if (pwd == pwdValid){
+					// Le mot de passe de confirmation est correct
 					console.debug("inscription de l'utilisateur");
-					
 					// requete ajax d'inscription
 				}
 				else{
+					// Le mot de passe de confirmation est incorrecte
+					console.debug("mot de passe incorrecte");
 					connexionValid = false;
 				}
 			}
-			else{
-				// connexion de l'utilisateur
+			else if ($('#validForm').val() == "connexion"){
+				// Connexion de l'utilisateur
 				console.debug("connexion de l'utilisateur");
 				/*$('html').block({ message: '<h1>Connexion en cours...</h1>',overlayCSS:{backgroundColor:'#0'},theme: true,
     baseZ: 2000  });*/
-				// requete ajax de connexion
+				// requete ajax TODO (validation login server)	
 			}
-			
-			
 		}
 		//connexionValid = true;
+		// Si tout est ok coté serveur alors on accède au page suivante
 		if ( connexionValid == true){
-			// Redirection vers l'acceuil
+			// Tout est OK
+			// Redirection vers la configuration avant la partie
 			console.debug("tout est correct -> accès jeu");
+			// On quitte la page de login
 			$('#modalStart').modal('hide');
+			// On affiche la page de configuration avant le jeu
 			$('#modalBeforeGame').modal('show');
-			
 		}
 		else{
-			//rien
+			// Problème, on verifie le type d'erreur pour informer l'utilisateur
 			if ((pseudo.length > 10) ||(pseudo.length < 3)){
 					alert("Le pseudo doit etre compris entre 3 et 10 caractere, veuillez saisir un autre pseudo");
 					return false;
@@ -77,13 +84,15 @@ var playerWait;
 				}
 			}
 		}
-		return false;
+		return false; // Dans tout les cas on ne recharge pas la page
 	});
 	
 	
 ////// Gestion de la configuration d'une partie
 
 	$('#nbJoueur').on('change', function() {
+		// Choix du nombre de joueur dans la combobox
+		// Désactivation des difficultées non utilisées
 		nbJoueur = $('#nbJoueur').val();
 		if (nbJoueur == 2){
 			$( ".nbPaire[data-value=8]" ).removeAttr( "disabled" );
@@ -100,6 +109,10 @@ var playerWait;
 			$( ".nbPaire[data-value=18]" ).attr("disabled", "disabled");
 			$( ".nbPaire[data-value=32]" ).removeAttr( "disabled" );
 		}
+	});
+	$('.typePartie').click(function(){
+		var typePartie = $('.typePartie .active');
+		console.debug(typePartie);
 	});
 	
 //// script de gestion de la fin du jeu
