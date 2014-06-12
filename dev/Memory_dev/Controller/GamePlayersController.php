@@ -108,4 +108,27 @@ class GamePlayersController extends AppController {
 			$this->Session->setFlash(__('The game player could not be deleted. Please, try again.'));
 		}
 		return $this->redirect(array('action' => 'index'));
-	}}
+	}
+	
+/**
+ * gameJoin method
+ * @return void
+ */
+	public function gameJoin() {
+		$this->autoRender = false;
+		if ($this->request->is('ajax'))
+		{
+			$gameId = $this->request->data['gameId'];
+			session_start();
+			
+			$options = array('conditions' => array('Player.login' => $_SESSION["login"]));
+			$player = $this->GamePlayer->Player->find('first', $options);
+			
+			$this->GamePlayer->create();
+			$this->GamePlayer->save(array('player_id' =>  $player["Player"]["id"], 'game_id' => $gameId));
+		}
+	}
+	
+}
+
+	
