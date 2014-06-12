@@ -9,8 +9,8 @@ var secondCard = {}; // Information sur la seconde carte cliqué
 var playerWait; // Variable pour l'attente a chaque tours
 
 //$(document).ajaxStop($.unblockUI);
-	$(".validLaunchGame").click(function(){
-	
+	$("#validLaunchGame").click(function(){
+	//
 	});
 //// script de gestion de la fin du jeu
 	$(".validEndGame").click(function(){
