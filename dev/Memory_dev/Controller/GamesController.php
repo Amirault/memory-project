@@ -130,17 +130,18 @@ class GamesController extends AppController {
 			$gameType = $this->Game->GameType->find('first', $options);
 			$options = array('conditions' => array('Player.login' => $_SESSION["login"]));
 			$hostPlayer = $this->Game->Player->find('first', $options);
-
+			
+			
 			$this->Game->create();
-			$this->Game->save(array('difficulty_id' => $difficulty['Difficulty']['id'], 'name'=> $gameName, 'gameType_id'=> $gameType["GameType"]["id"],
-			'numberMaximumOfPlayers'=> $nbPlayers, 'player_id'=> $hostPlayer["Player"]["id"]));
+			$this->Game->save(array('difficulty_id'=> $difficulty['Difficulty']['id'], 'name'=> $gameName, 'gameType_id'=> $gameType["GameType"]["id"], 'numberMaximumOfPlayers'=> $nbPlayers, 'player_id'=> $hostPlayer["Player"]["id"]));
 			$gameId = $this->Game->getInsertID();
 			
 			$this->Game->GamePlayer->create();
 			$this->Game->GamePlayer->save(array('player_id' =>  $hostPlayer["Player"]["id"], 'game_id'=> $gameId));
-
+	
 			$message =  "La partie ".$gameName." a été créée !";
-			echo json_encode(array('message'=> $message));
+			$arr = array('message'=> $message, 'gid'=> $gameId);
+			echo json_encode($arr);
 		}
 	}
 	
