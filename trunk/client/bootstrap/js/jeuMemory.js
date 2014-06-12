@@ -10,12 +10,18 @@ var playerWait; // Variable pour l'attente a chaque tours
 
 //$(document).ajaxStop($.unblockUI);
 
+//
+
 
 ////// Gestion de la page de login et inscription
-	$('#modalStart').modal('show');
+	$('#modalStart').modal({
+	  backdrop: 'static',
+	  keyboard: false
+	});
 	$("#activeInscription").click(function(){
 		// L'utilisateur veut s'incrire
 		$('#validMdp').show();
+		
 		$('#validForm').val('inscription');
 		return false;
 	});
@@ -65,7 +71,10 @@ var playerWait; // Variable pour l'attente a chaque tours
 			// On quitte la page de login
 			$('#modalStart').modal('hide');
 			// On affiche la page de configuration avant le jeu
-			$('#modalBeforeGame').modal('show');
+			$('#modalBeforeGame').modal({
+			  backdrop: 'static',
+			  keyboard: false
+			});
 		}
 		else{
 			// Problème, on verifie le type d'erreur pour informer l'utilisateur
@@ -121,13 +130,19 @@ var playerWait; // Variable pour l'attente a chaque tours
 		if ($(this).val() == 'rejouer'){
 			// On redemarre le jeu, on patiente. si on est host alors on peut démarrer la partie si nbjoueur > 1
 			$('#modalWin').modal('hide');
-			$('#modalWaitPlayer').modal('show');
+			$('#modalWaitPlayer').modal({
+			  backdrop: 'static',
+			  keyboard: false
+			});
 			// Lancement du pool ajax selon si on est host ou visiteur
 		}
 		else{
 			// On retourne à la page de configuration de la partie
 			$('#modalWin').modal('hide');
-			$('#modalBeforeGame').modal('show');
+			$('#modalBeforeGame').modal({
+			  backdrop: 'static',
+			  keyboard: false
+			});
 		}
 	});
 			
@@ -195,7 +210,10 @@ var playerWait; // Variable pour l'attente a chaque tours
 											//alert('bravo');
 											$.unblockUI();
 											
-											$('#modalWin').modal('show');
+											$('#modalWin').modal({
+											  backdrop: 'static',
+											  keyboard: false
+											});
 											//return false:
 											// requete ajax pour informer de la fin de la partie
 										}
