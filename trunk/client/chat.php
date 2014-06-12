@@ -22,16 +22,16 @@ var myIDpartie;
 		myIDpartie = $('#IDpartie').val(); //get Id partie
 		//console.log(myIDpartie);
 		if(myname == ""){ //empty name?
-			alert("Enter your Name please!");
+			alert("Entrze votre nom");
 			return;
 		}
 		if(mymessage == ""){ //emtpy message?
-			alert("Enter Some message Please!");
+			alert("Ecrivez un message!");
 			return;
 		}
 		
 		if(myIDpartie == ""){ //emtpy message?
-		alert("Enter Some message Please!");
+		alert("Ecrivez un message!");
 		return;
 		}
 		
@@ -88,12 +88,12 @@ var myIDpartie;
 <!-- conteneur du chat -->
 <div class="row-fluid" style="height:100%">
 <!-- bloc ou ce trouve les messages -->
-	<div id="message_box" class="row-fluid"></div>
+	<div id="message_box" class="row-fluid"  style="border:10px;"></div>
 	<!-- bloc permettant de saisir le message -->
-	<div class="row-fluid" style="position:absolute;bottom:0;left:0;right:0;border-top:1px solid grey;">
+	<div class="row-fluid" style="position:absolute;bottom:10px;left:0;right:0;border-top:1px solid grey;">
 	<!--<input type="text" name="IDpartie" id="IDpartie" placeholder="Your ID" maxlength="10" style="width:10%"  />
 		<input type="text" name="name" id="name" placeholder="Your Name" maxlength="10" style="width:20%"  />-->
-		<input type="text" name="message" id="message" placeholder="Message" maxlength="80" style="width:50%" />
-		<button class="btn btn-primary" id="send-btn">Send</button>
+		<input type="text" name="message" id="message" placeholder="Message" maxlength="80" style="width:50%;margin:auto;" />
+		<button class="btn btn-primary" id="send-btn">Envoyer</button>
 	</div>
 </div> 

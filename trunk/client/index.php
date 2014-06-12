@@ -161,14 +161,71 @@
 						<div class="row-fluid" style="border-top:1px solid black">
 							<div class="span6" style="border-right:1px solid black">
 								<div class="row-fluid" style="border-bottom:1px solid black">Joueur</div>
+								<table class="table table-small-font table-bordered table-striped">
+						<tbody>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
 							</div>
 							<div class="span6" style="border-left:1px solid black">
-								<div class="row-fluid" style="border-bottom:1px solid black">Nombre de Paires</div>
+								<div class="row-fluid" style="border-bottom:1px solid black">Nb de Paires</div>
+								<table class="table table-small-font table-bordered table-striped">
+						<thead>
+						<tbody>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
 							</div>
 						</div>
 					</div>
 					<div class="row-fluid" style="height:40%;position:relative;bottom:0;right:0;border-top:1px solid black;border-bottom:1px solid black;">
-						Chat
+						<?php include('chat.php'); ?>
 					</div>
 				</div>
 			</div>
