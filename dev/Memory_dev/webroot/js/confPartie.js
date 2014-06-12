@@ -1,6 +1,6 @@
 $(function(){
 ////// Gestion de la configuration d'une partie
-
+var isHost = false;
 	$('#nbJoueur').on('change', function() {
 		// Choix du nombre de joueur dans la combobox
 		// Désactivation des difficultées non utilisées
@@ -50,6 +50,7 @@ $(function(){
 		data: ({gameType:gameType, gameName:gameName, nbPlayers:nbPlayers, nbPairs:nbPairs}),
 		success: function (data, textStatus)
 				{
+					isHost = true;
 					console.debug(data);
 					$('#modalBeforeGame').modal('hide');
 					$('#modalWaitPlayer').modal({
@@ -155,8 +156,13 @@ $(function(){
 							classe = "success";
 						if (val["Player"]["id"] == val["Game"]["player_id"])
 							$("#playerList").append("<tr class='"+classe+"'><td> HOST "+val["Player"]["login"]+"</td></tr>");		
-						else
-						$("#playerList").append("<tr class='"+classe+"'><td>"+val["Player"]["login"]+"</td></tr>");															
+						else{
+							$("#playerList").append("<tr class='"+classe+"'><td>"+val["Player"]["login"]+"</td></tr>");
+							if (isHost == true){
+								$("#validLaunchGame").html("Lancer");
+								$("#validLaunchGame").removeAttr("disabled");
+							}
+						}
 					});
 				}
 		});
