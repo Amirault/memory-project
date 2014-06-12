@@ -138,10 +138,34 @@ class GamesController extends AppController {
 			
 			$this->Game->GamePlayer->create();
 			$this->Game->GamePlayer->save(array('player_id' =>  $hostPlayer["Player"]["id"], 'game_id'=> $gameId));
-	
+			
+			$collection = $this->Game->GameCard->Card->Collection->find();
+			$options = array('conditions' => array('Card.collection_id' => $collection["Collection"]["id"]));
+			$cards = $this->Game->GameCard->Card->find('all',$options);
+			
+			shuffle($cards);
+			$rand_cards = array_slice($cards, 0, $nbPairs);
+			$rand_cards = array_merge($rand_cards , $rand_cards);
+			shuffle($rand_cards);
+			$val = 0;
+			for($i=0;$i<4;$i++)
+			{
+				switch($nbPairs){
+					case 32:
+						break;
+					default:
+						for($j=0;$j<$nbPairs/2;$j++)
+						{
+							$this->Game->GameCard->create();
+							$this->Game->GameCard->save(array('game_id'=> $gameId, 'card_id' =>  $rand_cards[$val]["Card"]["id"],  'position_x'=> $i, 'position_y' => $j ));
+							$val++;
+						}
+				}
+			}
+			
 			$message =  "La partie ".$gameName." a été créée !";
 			$arr = array('message'=> $message, 'gid'=> $gameId);
-			echo json_encode($arr);
+			echo json_encode($this->Game->findById($gameId));
 		}
 	}
 	
