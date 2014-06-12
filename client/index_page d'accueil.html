@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" >
+	<head>
+		<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+		<link href="css/animate.css" rel="stylesheet">
+		<script src='bootstrap/js/jquery.js'></script>
+		<script src='bootstrap/js/bootstrap.js'></script>
+		<script src='bootstrap/js/blockUI.js'></script>
+		<script src='bootstrap/js/wow.min.js'></script>
+		<title>Memory accueil</title>
+		<style type="text/css">
+
+
+		.flip-container {
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -o-perspective: 1000;
+    perspective: 1000;
+}
+
+.flip-container, .flip-front, .flip-back {
+     height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.flipper {
+    -moz-transform: perspective(1000px);
+    -moz-transform-style: preserve-3d;
+
+    position: relative;
+}
+
+.flip-front, .flip-back {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    -webkit-transition: 0.6s;
+    -webkit-transform-style: preserve-3d;
+
+    -moz-transition: 0.6s;
+    -moz-transform-style: preserve-3d;
+
+    -o-transition: 0.6s;
+    -o-transform-style: preserve-3d;
+
+    -ms-transition: 0.6s;
+    -ms-transform-style: preserve-3d;
+
+    transition: 0.6s;
+    transform-style: preserve-3d;
+
+
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.flip-back {
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+}
+
+.flip-container.hover .flip-back, .flip-container.hover .flip-back {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+.flip-container.hover .flip-front, .flip-container.hover .flip-front {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+
+.flip-front {
+    z-index: 2;
+}
+		</style>
+	</head>
+	<body>
+		<div id="JEU" style="height:100%">
+			<div class="row-fluid" style="height:100%; >
+				<div class="span9">
+					<div class="row-fluid wow bounceInUp" style="padding:5%;height:100%;">
+						<!-- ZONE DE JEU -->
+						<div class="row-fluid">
+							<div class="span1 card flip-container" ligne="1" colonne="1" found="false"  style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/LettreJ.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/LettreM.png" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="2" found="false" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/LettreO.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/LettreE.png" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="3"  found="false" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/LettreU.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/LettreM.png" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container"  ligne="1" colonne="4" found="false" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/LettreE.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/LettreO.png" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="5" found="false" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/LettreR.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/LettreR.png" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="6" found="false" style="position:relative;border:1px solid black; overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/Lettre_p.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/LettreY.png" />
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<script>
+				$(function() {
+				new WOW().init();
+				  $(".card").height($(".card").width());// Mise en forme des cartes (largeur = longueur)
+				  $(".card").mouseover(function(){
+					$(".card").addClass('hover');	
+				  });
+				});
+				
+				</script>
+				
+			</div>
+		</div>
+		</div> <button id="accueilStart" class="btn btn-success btn-large"> Start </button>
+		
+	</body>
+</html>
+
+		
