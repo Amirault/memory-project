@@ -50,7 +50,7 @@ $(function(){
 		data: ({gameType:gameType, gameName:gameName, nbPlayers:nbPlayers, nbPairs:nbPairs}),
 		success: function (data, textStatus)
 				{
-					alert(data.message);
+					console.debug(data);
 					$('#modalBeforeGame').modal('hide');
 					$('#modalWaitPlayer').modal({
 						  backdrop: 'static',
