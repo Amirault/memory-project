@@ -88,3 +88,8 @@ CREATE TABLE IF NOT EXISTS `game_cards` (
 INSERT INTO `gametypes` (`id`, `name`) VALUES
 (1, 'Arcade'),
 (2, 'Versus');
+
+INSERT INTO `memory_dev`.`difficulties` (`id`, `numberOfPairs`, `CoefficientForPoint`, `created`, `modified`) VALUES (NULL, '8', '1', NULL, NULL);
+INSERT INTO `memory_dev`.`difficulties` (`id`, `numberOfPairs`, `CoefficientForPoint`, `created`, `modified`) VALUES (NULL, '18', '2', NULL, NULL);
+INSERT INTO `memory_dev`.`difficulties` (`id`, `numberOfPairs`, `CoefficientForPoint`, `created`, `modified`) VALUES (NULL, '32', '3', NULL, NULL);
+
