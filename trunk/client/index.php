@@ -220,8 +220,8 @@
 								<div class="row-fluid" style="text-align:center">
 									<p>Type de partie :</p>
 									<span class="btn-group" data-toggle="buttons-radio" id="typePartie">
-									  <button class="btn active" data-value="0">Arcade</button>
-									  <button class="btn" data-value="1">Versus</button>
+									  <button class="typePartie btn active" data-value="0">Arcade</button>
+									  <button class="typePartie btn" data-value="1">Versus</button>
 									</span>
 								</div>
 								<br />
@@ -460,6 +460,8 @@
 			<script src='bootstrap/js/blockUI.js'></script>
 			<script src='bootstrap/js/wow.min.js'></script>
 			<script src='bootstrap/js/jeuMemory.js'></script>
+			<script src='bootstrap/js/confPartie.js'></script>
+			<script src='bootstrap/js/login.js'></script>
 		</div>
 	</body>
 </html>
