@@ -1,233 +1,507 @@
-<?php
-/**
- *
- *
- * @link          http://cakephp.org CakePHP(tm) Project
- * @package       app.View.Pages
- * @since         CakePHP(tm) v 0.10.0.1076
- */
 
-if (!Configure::read('debug')):
-	throw new NotFoundException();
-endif;
+		<div id="JEU" style="height:100%;">
+			<div class="row-fluid" style="height:100%; >
+				<div class="span9">
+					<div class="row-fluid wow bounceInUp" style="padding:5%;height:100%;">
+						<!-- ZONE DE JEU -->
+						<div class="row-fluid">
+							<div class="span1 card flip-container" ligne="1" colonne="1" found="false" idPair="3" style="position:relative;overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back">
+										<img src="img/tony.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="2" found="false" idPair="2" style="position:relative;overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/eyal.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="3"  found="false" idPair="0" style="position:relative;overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/sof.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container"  ligne="1" colonne="4" found="false" idPair="1" style="position:relative;overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/Dat.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="5" found="false" idPair="0" style="position:relative;overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/sof.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="6" found="false" idPair="1" style="position:relative;overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/Dat.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="7" found="false" idPair="2" style="position:relative;overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/eyal.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="1" colonne="8" found="false"  idPair="3" style="position:relative;overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/tony.jpg" />
+									</div>
+								</div>
+							</div>
+						</div>
+						<br/>
+						<div class="row-fluid">
+							<div class="span1 card flip-container" ligne="2" colonne="1" found="false" idPair="4" style="position:relative;overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/van.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card flip-container" ligne="2" colonne="2" found="false"  idPair="4" style="position:relative;overflow:hidden">
+								<div class="flipper">
+									<div class="flip-front">
+										<img src="img/back-card.png" />
+									</div>
+									<div class="flip-back" >
+										<img src="img/van.jpg" />
+									</div>
+								</div>
+							</div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+						</div>
+						<br/>
+						<div class="row-fluid">
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+						</div>
+						<br/>
+						<div class="row-fluid">
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+							<div class="span1 card" style="border:1px solid black"></div>
+						</div>
+					</div>
+				</div>
 
-App::uses('Debugger', 'Utility');
-?>
-<h2><?php echo __d('cake_dev', 'Release Notes for CakePHP %s.', Configure::version()); ?></h2>
-<p>
-	<a href="http://cakephp.org/changelogs/<?php echo Configure::version(); ?>"><?php echo __d('cake_dev', 'Read the changelog'); ?> </a>
-</p>
-<?php
-if (Configure::read('debug') > 0):
-	Debugger::checkSecurityKeys();
-endif;
-?>
-<?php
-if (file_exists(WWW_ROOT . 'css' . DS . 'cake.generic.css')):
-?>
-<p id="url-rewriting-warning" style="background-color:#e32; color:#fff;">
-	<?php echo __d('cake_dev', 'URL rewriting is not properly configured on your server.'); ?>
-	1) <a target="_blank" href="http://book.cakephp.org/2.0/en/installation/url-rewriting.html" style="color:#fff;">Help me configure it</a>
-	2) <a target="_blank" href="http://book.cakephp.org/2.0/en/development/configuration.html#cakephp-core-configuration" style="color:#fff;">I don't / can't use URL rewriting</a>
-</p>
-<?php
-endif;
-?>
-<p>
-<?php
-	if (version_compare(PHP_VERSION, '5.2.8', '>=')):
-		echo '<span class="notice success">';
-			echo __d('cake_dev', 'Your version of PHP is 5.2.8 or higher.');
-		echo '</span>';
-	else:
-		echo '<span class="notice">';
-			echo __d('cake_dev', 'Your version of PHP is too low. You need PHP 5.2.8 or higher to use CakePHP.');
-		echo '</span>';
-	endif;
-?>
-</p>
-<p>
-	<?php
-		if (is_writable(TMP)):
-			echo '<span class="notice success">';
-				echo __d('cake_dev', 'Your tmp directory is writable.');
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'Your tmp directory is NOT writable.');
-			echo '</span>';
-		endif;
-	?>
-</p>
-<p>
-	<?php
-		$settings = Cache::settings();
-		if (!empty($settings)):
-			echo '<span class="notice success">';
-				echo __d('cake_dev', 'The %s is being used for core caching. To change the config edit %s', '<em>'. $settings['engine'] . 'Engine</em>', 'APP/Config/core.php');
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'Your cache is NOT working. Please check the settings in %s', 'APP/Config/core.php');
-			echo '</span>';
-		endif;
-	?>
-</p>
-<p>
-	<?php
-		$filePresent = null;
-		if (file_exists(APP . 'Config' . DS . 'database.php')):
-			echo '<span class="notice success">';
-				echo __d('cake_dev', 'Your database configuration file is present.');
-				$filePresent = true;
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'Your database configuration file is NOT present.');
-				echo '<br/>';
-				echo __d('cake_dev', 'Rename %s to %s', 'APP/Config/database.php.default', 'APP/Config/database.php');
-			echo '</span>';
-		endif;
-	?>
-</p>
-<?php
-if (isset($filePresent)):
-	App::uses('ConnectionManager', 'Model');
-	try {
-		$connected = ConnectionManager::getDataSource('default');
-	} catch (Exception $connectionError) {
-		$connected = false;
-		$errorMsg = $connectionError->getMessage();
-		if (method_exists($connectionError, 'getAttributes')):
-			$attributes = $connectionError->getAttributes();
-			if (isset($errorMsg['message'])):
-				$errorMsg .= '<br />' . $attributes['message'];
-			endif;
-		endif;
-	}
-?>
-<p>
-	<?php
-		if ($connected && $connected->isConnected()):
-			echo '<span class="notice success">';
-				echo __d('cake_dev', 'CakePHP is able to connect to the database.');
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'CakePHP is NOT able to connect to the database.');
-				echo '<br /><br />';
-				echo $errorMsg;
-			echo '</span>';
-		endif;
-	?>
-</p>
-<?php endif; ?>
-<?php
-	App::uses('Validation', 'Utility');
-	if (!Validation::alphaNumeric('cakephp')):
-		echo '<p><span class="notice">';
-			echo __d('cake_dev', 'PCRE has not been compiled with Unicode support.');
-			echo '<br/>';
-			echo __d('cake_dev', 'Recompile PCRE with Unicode support by adding <code>--enable-unicode-properties</code> when configuring');
-		echo '</span></p>';
-	endif;
-?>
+				<div class="span3" style="background-color:white;height:100%;position:absolute;right:0;top:0;margin-left:2%;border-left:2px solid black;text-align:center">
+					<!-- Zone information partie -->
+					<div class="row-fluid" style="height:50%;">
+						<div class="row-fluid">
+							<p > Temps : <p>
+							<p><span style="font-size:30px" class="countdown wow pulse" data-wow-iteration="10"></span> </p>
+						</div>
+						<div class="row-fluid">
+							<p> Score : </p>
+						</div>
+						<div class="row-fluid" style="border-top:1px solid black">
+							<div class="span6" style="border-right:1px solid black">
+								<div class="row-fluid" style="border-bottom:1px solid black">Joueur</div>
+								<table class="table table-small-font table-bordered table-striped">
+						<tbody>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+							</div>
+							<div class="span6" style="border-left:1px solid black">
+								<div class="row-fluid" style="border-bottom:1px solid black">Nb de Paires</div>
+								<table class="table table-small-font table-bordered table-striped">
+						<thead>
+						<tbody>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+							</div>
+						</div>
+					</div>
+					<div class="row-fluid" style="height:40%;position:relative;bottom:0;right:0;border-top:1px solid black;border-bottom:1px solid black;">
+						<?php //include('chat.php'); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div id="modalStart" class="modal hide fade">
+			<div class="modal-header">
+				<h3>Bienvenue, veuillez vous identifier :</h3>
+			</div>
+			<div class="modal-body">
+				<div class="row-fluid">
+					<div class="span1"></div>
+					<div class="span4">
+							<input id="pseudo" name="pseudo" placeholder="Votre Pseudo" class="input-xlarge"  type="text" required/>
+							<input id="mdp" name="mdp" placeholder="Votre mot de passe" class="input-xlarge"  type="password" required/>
+							<a href="#"  id="activeInscription">S'inscrire</a>
+							ou
+							<a href="#" id="activeConnexion">Se connecter</a>
+							<input id="validMdp" style="display:none" name="validMdp" placeholder="Confirmer le mot de passe" class="input-xlarge"  type="password" required/> 
+					</div>
+					<div class="span1"></div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="row-fluid">
+					<div class="span1"></div>
+					<div class="span10" style="text-align:center">
+						<button  class="btn" id="validForm" value="connexion">Connexion</button>
+					</div>
+					<div class="span1"></div>
+				</div>
+			</div>
+		</div>
+		<div id="modalBeforeGame" class="modal hide fade" >
+			<div class="modal-header">
+				<h3>Avant de jouer :</h3>
+			</div>
+			<div class="modal-body">
+				<div class="row-fluid">
+					<div class="accordion" id="accordion2">
+						<div class="accordion-group">
+						  <div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+							  Creer une partie !
+							</a>
+						  </div>
+						  <div id="collapseOne" class="accordion-body collapse in">
+							<div class="accordion-inner">
+								<div class="row-fluid" style="text-align:center">
+									<p>Type de partie :</p>
+									<span class="btn-group" data-toggle="buttons-radio" id="typePartie">
+									  <button class="typePartie btn active" data-value="0">Arcade</button>
+									  <button class="typePartie btn" data-value="1">Versus</button>
+									</span>
+								</div>
+								<br />
+								<div class="row-fluid">
+									<div class="span3">
+										<p>Nom de la partie :</p>
+										<input type="text" name="nomPartie" id="nomPartie" class="span12"/>
+									</div>
+									<div class="span1"></div>
+									<div class="span4">
+										<p>
+											Nombre de joueurs : 
+										</p>
+										<select id="nbJoueur" name="nbJoueur" class="combobox span10" >
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+										</select>
+									</div>
+									<div class="span3 pull-right">
+										<p>
+											Nombre paire : 
+										</p>
+										<span class="btn-group" data-toggle="buttons-radio" id="nbPaire">
+										  <button class="nbPaire btn active" data-value="8">8</button>
+										  <button class="nbPaire btn" data-value="18">18</button>
+										  <button class="nbPaire btn" data-value="32">32</button>
+										</span>
+									</div>
+								</div>
+								<div class="row-fluid" style="text-align:center">
+									<button class="btn btn-primary"> Creer la partie </button>
+								</div>
+							</div>
+						  </div>
+						</div>
+						<div class="accordion-group">
+						  <div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+							  Rejoindre une partie !
+							</a>
+						  </div>
+						  <div id="collapseTwo" class="accordion-body collapse" style="height: 0px;">
+							<div class="accordion-inner">
+								<div class="table-responsive">
+											<table class="table table-small-font table-bordered table-striped">
+											<thead>
+											<tr>
+											<th>Nom de la partie</th>
+											<th>Createur</th>
+											<th>Nombre de joueurs</th>
+											<th>Rejoindre</th>
+											</tr>
+											</thead>
+											<tbody>
+											<tr class="active">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
+											</tr>
+											<tr class="success">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
+											</tr>
+											<tr class="active">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
+											</tr>
+											<tr class="success">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
+											</tr>
+											<tr class="active">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
+											</tr>
+											<tr class="success">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
+											</tr>
+											<tr class="active">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
+											</tr>
+											<tr class="success">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
+											</tr>
+											<tr class="active">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
+											</tr>
+											<tr class="success">
+											<td></td>
+											<td></td>
+											<td></td>
+											<td style="padding:0"><button class="btn btn-default span12"> GO ! </button></td>
+											</tr>
+											</tbody>
+										</table>
+								</div>
+							</div>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="modalWin" class="modal hide fade" >
+			<div class="modal-header">
+			<h3> Bravo, vous avez gagne ! </h3>
+			</div>
+			<div class="modal-body">	
+				<div class="table-responsive">
+					<table class="table table-small-font table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Joueur</th>
+								<th>Score</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="active">
+								<td></td>
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+								<td></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="row-fluid">
+					<div class="span1"></div>
+					<div class="span5" style="text-align:center">
+						<button  class="btn validEndGame" value="rejouer">Rejouer</button>
+					</div>
+					<div class="span5" style="text-align:center">
+						<button  class="btn validEndGame" value="quitter">Quitter</button>
+					</div>
+					<div class="span1"></div>
+				</div>
+			</div>
+		</div>
+		<div id="modalWaitPlayer" class="modal hide fade" >
+			<div class="modal-header">
+			<h3> Attente des joueurs </h3>
+			</div>
+			<div class="modal-body">	
+				<div class="table-responsive">
+					<table class="table table-small-font table-bordered table-striped">
+						<thead>
+							<tr>
+								<th>Joueurs</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							<tr class="active">
+								<td></td>
+							</tr>
+							<tr class="success">
+								<td></td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<div class="row-fluid">
+					<div class="span1"></div>
+					<div class="span10" style="text-align:center">
+						<button  class="btn btn-primary validEndGame" value="lancer" disabled="disabled">Patientez ...</button>
+					</div>
+					<div class="span1"></div>
+				</div>
+			</div>
+		</div>
 
-<p>
-	<?php
-		if (CakePlugin::loaded('DebugKit')):
-			echo '<span class="notice success">';
-				echo __d('cake_dev', 'DebugKit plugin is present');
-			echo '</span>';
-		else:
-			echo '<span class="notice">';
-				echo __d('cake_dev', 'DebugKit is not installed. It will help you inspect and debug different aspects of your application.');
-				echo '<br/>';
-				echo __d('cake_dev', 'You can install it from %s', $this->Html->link('GitHub', 'https://github.com/cakephp/debug_kit'));
-			echo '</span>';
-		endif;
-	?>
-</p>
 
-<h3><?php echo __d('cake_dev', 'Editing this Page'); ?></h3>
-<p>
-<?php
-echo __d('cake_dev', 'To change the content of this page, edit: %s.<br />
-To change its layout, edit: %s.<br />
-You can also add some CSS styles for your pages at: %s.',
-	'APP/View/Pages/home.ctp', 'APP/View/Layouts/default.ctp', 'APP/webroot/css');
-?>
-</p>
-
-<h3><?php echo __d('cake_dev', 'Getting Started'); ?></h3>
-<p>
-	<?php
-		echo $this->Html->link(
-			sprintf('<strong>%s</strong> %s', __d('cake_dev', 'New'), __d('cake_dev', 'CakePHP 2.0 Docs')),
-			'http://book.cakephp.org/2.0/en/',
-			array('target' => '_blank', 'escape' => false)
-		);
-	?>
-</p>
-<p>
-	<?php
-		echo $this->Html->link(
-			__d('cake_dev', 'The 15 min Blog Tutorial'),
-			'http://book.cakephp.org/2.0/en/tutorials-and-examples/blog/blog.html',
-			array('target' => '_blank', 'escape' => false)
-		);
-	?>
-</p>
-
-<h3><?php echo __d('cake_dev', 'Official Plugins'); ?></h3>
-<p>
-<ul>
-	<li>
-		<?php echo $this->Html->link('DebugKit', 'https://github.com/cakephp/debug_kit') ?>:
-		<?php echo __d('cake_dev', 'provides a debugging toolbar and enhanced debugging tools for CakePHP applications.'); ?>
-	</li>
-	<li>
-		<?php echo $this->Html->link('Localized', 'https://github.com/cakephp/localized') ?>:
-		<?php echo __d('cake_dev', 'contains various localized validation classes and translations for specific countries'); ?>
-	</li>
-</ul>
-</p>
-
-<h3><?php echo __d('cake_dev', 'More about CakePHP'); ?></h3>
-<p>
-<?php echo __d('cake_dev', 'CakePHP is a rapid development framework for PHP which uses commonly known design patterns like Active Record, Association Data Mapping, Front Controller and MVC.'); ?>
-</p>
-<p>
-<?php echo __d('cake_dev', 'Our primary goal is to provide a structured framework that enables PHP users at all levels to rapidly develop robust web applications, without any loss to flexibility.'); ?>
-</p>
-
-<ul>
-	<li><a href="http://cakephp.org">CakePHP</a>
-	<ul><li><?php echo __d('cake_dev', 'The Rapid Development Framework'); ?></li></ul></li>
-	<li><a href="http://book.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Documentation'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Your Rapid Development Cookbook'); ?></li></ul></li>
-	<li><a href="http://api.cakephp.org"><?php echo __d('cake_dev', 'CakePHP API'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Quick API Reference'); ?></li></ul></li>
-	<li><a href="http://bakery.cakephp.org"><?php echo __d('cake_dev', 'The Bakery'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Everything CakePHP'); ?></li></ul></li>
-	<li><a href="http://plugins.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Plugins'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'A comprehensive list of all CakePHP plugins created by the community'); ?></li></ul></li>
-	<li><a href="http://community.cakephp.org"><?php echo __d('cake_dev', 'CakePHP Community Center'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Everything related to the CakePHP community in one place'); ?></li></ul></li>
-	<li><a href="https://groups.google.com/group/cake-php"><?php echo __d('cake_dev', 'CakePHP Google Group'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Community mailing list'); ?></li></ul></li>
-	<li><a href="irc://irc.freenode.net/cakephp">irc.freenode.net #cakephp</a>
-	<ul><li><?php echo __d('cake_dev', 'Live chat about CakePHP'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/"><?php echo __d('cake_dev', 'CakePHP Code'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Find the CakePHP code on GitHub and contribute to the framework'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/cakephp/issues"><?php echo __d('cake_dev', 'CakePHP Issues'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'CakePHP Issues'); ?></li></ul></li>
-	<li><a href="https://github.com/cakephp/cakephp/wiki#roadmaps"><?php echo __d('cake_dev', 'CakePHP Roadmaps'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'CakePHP Roadmaps'); ?></li></ul></li>
-	<li><a href="http://training.cakephp.org"><?php echo __d('cake_dev', 'Training'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Join a live session and get skilled with the framework'); ?></li></ul></li>
-	<li><a href="http://cakefest.org"><?php echo __d('cake_dev', 'CakeFest'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Don\'t miss our annual CakePHP conference'); ?></li></ul></li>
-	<li><a href="http://cakefoundation.org"><?php echo __d('cake_dev', 'Cake Software Foundation'); ?> </a>
-	<ul><li><?php echo __d('cake_dev', 'Promoting development related to CakePHP'); ?></li></ul></li>
-</ul>

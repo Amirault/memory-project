@@ -52,7 +52,7 @@ if (!defined('APP_DIR')) {
  * The following line differs from its sibling
  * /app/webroot/index.php
  */
-define('CAKE_CORE_INCLUDE_PATH', 'C:' . DS . 'Program Files (x86)' . DS . 'EasyPHP-DevServer-14.1VC9' . DS . 'data' . DS . 'localweb' . DS . 'Memory' . DS . 'dev' . DS . 'cakephp-cakephp-5e3c362' . DS . 'lib');
+define('CAKE_CORE_INCLUDE_PATH', ROOT. DS . 'cakephp-cakephp-5e3c362' . DS . 'lib');
 
 /**
  * Editing below this line should NOT be necessary.
