@@ -55,9 +55,10 @@ $(function(){
 					$('#modalWaitPlayer').modal({
 						  backdrop: 'static',
 						  keyboard: false });
+					setInterval(function(){refreshPlayers(data.gid)},1000);
 				}
 		});
-		setInterval(function(){refreshPlayers(game_id)},1000);	 
+	 
 	});
 	
 	$("#joinGame").click(function(){
