@@ -18,7 +18,7 @@
 	<tr>
 		<td><?php echo h($game['Game']['id']); ?>&nbsp;</td>
 		<td>
-			<?php echo $this->Html->link($game['Difficulty']['name'], array('controller' => 'difficulties', 'action' => 'view', $game['Difficulty']['id'])); ?>
+			<?php echo $this->Html->link($game['Difficulty']['id'], array('controller' => 'difficulties', 'action' => 'view', $game['Difficulty']['id'])); ?>
 		</td>
 		<td><?php echo h($game['Game']['name']); ?>&nbsp;</td>
 		<td>
