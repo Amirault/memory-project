@@ -32,6 +32,18 @@ $(function(){
 					// Le mot de passe de confirmation est correct
 					console.debug("inscription de l'utilisateur");
 					// requete ajax d'inscription
+					$.ajax({
+					async: false,
+					dataType: "json",
+					type: "POST",
+					url: "players/signUp",
+					data: ({login:pseudo, password:pwd}),
+					success: function (data, textStatus)
+							{
+								alert(data.message);
+								connexionValid = data.status;
+							}
+					});
 				}
 				else{
 					// Le mot de passe de confirmation est incorrecte
@@ -44,10 +56,22 @@ $(function(){
 				console.debug("connexion de l'utilisateur");
 				/*$('html').block({ message: '<h1>Connexion en cours...</h1>',overlayCSS:{backgroundColor:'#0'},theme: true,
     baseZ: 2000  });*/
-				// requete ajax TODO (validation login server)	
+				// requete ajax TODO (validation login server)
+				$.ajax({
+					async: false,
+					dataType: "json",
+					type: "POST",
+					url: "players/signIn",
+					data: ({login:pseudo, password:pwd}),
+					success: function (data, textStatus)
+							{
+								alert(data.message);
+								connexionValid = data.status;
+							}
+					});				
 			}
 		}
-		connexionValid = true;
+		//connexionValid = true;
 		// Si tout est ok coté serveur alors on accède au page suivante
 		if ( connexionValid == true){
 			// Tout est OK

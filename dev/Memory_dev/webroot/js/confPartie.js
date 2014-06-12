@@ -35,4 +35,64 @@ $(function(){
 		}
 		console.debug(typePartie);
 	});
+	
+	$("#creerPartie").click(function(){
+	var gameType = $(".typePartie.active").html();
+	var gameName = $("#nomPartie").val();
+	var nbPlayers = $("#nbJoueur").val();
+	var nbPairs = $(".nbPaire.active").html();
+
+		// requete ajax d'inscription
+		$.ajax({
+		async: false,
+		dataType: "json",
+		type: "POST",
+		url: "games/gameCreate",
+		data: ({gameType:gameType, gameName:gameName, nbPlayers:nbPlayers, nbPairs:nbPairs}),
+		success: function (data, textStatus)
+				{
+					alert(data.message);
+				}
+		});
+	});
+	
+	$("#joinGame").click(function(){
+		// requete ajax d'inscription
+		$.ajax({
+		async: false,
+		dataType: "json",
+		type: "POST",
+		url: "games/gameFindAll",
+		data: ({}),
+		success: function (data, textStatus)
+				{
+					var ite = 0;
+					var classe;
+					jQuery.each(data, function(i, val)
+					{
+						ite ++;
+						if (ite%2==1)
+							classe = "active";
+						else
+							classe = "success";
+						$("#gameList").append("<tr class='"+classe+"'><td>"+val["Game"]["name"]+"</td><td>"+val["Player"]["login"]+"</td><td>"+val["GamePlayer"].length+"/"+val["Game"]["numberMaximumOfPlayers"]+"</td><td style='padding:0'><button class='btnJoin' id='"+val["Game"]["id"]+"' class='btn btn-default span12'> GO ! </button></td></tr>");															
+					});
+				}		
+		});
+	});
+
+	$('body').on('click', '.btnJoin',  function() {
+		var game_id =  $(this).attr('id');
+		$.ajax({
+		async: false,
+		dataType: "json",
+		type: "POST",
+		url: "gamePlayers/gameJoin",
+		data: ({gameId:game_id}),
+		success: function (data, textStatus)
+				{
+					alert(data.message);
+				}
+		});
+	});
 });
