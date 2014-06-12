@@ -1,1 +1,5 @@
 php -q C:\wamp\www\Memory\server.php
+
+wsmemoryapp4@gmail.com
+
+http://wsmemoryapp4.olympe.in/
