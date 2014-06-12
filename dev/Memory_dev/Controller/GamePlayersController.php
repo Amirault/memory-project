@@ -129,6 +129,21 @@ class GamePlayersController extends AppController {
 		}
 	}
 	
+	/**
+ * getPlayers method
+ * @return void
+ */
+	public function getGame() {
+		$this->autoRender = false;
+		if ($this->request->is('ajax'))
+		{
+			$gameId = $this->request->data['gameId'];
+			$options = array('conditions' => array('GamePlayer.game_id' =>$gameId ));
+			$game = $this->GamePlayer->find('all', $options);
+			
+			echo json_encode($game);
+		}
+	}
 }
 
 	

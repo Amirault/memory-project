@@ -6,8 +6,11 @@
 				echo "<script>$(document).ready(function()
 												{
 													$('#modalStart').modal('hide');
-													$('#modalBeforeGame').modal('show');
-												})
+													$('#modalBeforeGame').modal({
+									  backdrop: 'static',
+									  keyboard: false
+									});
+											})
 					;</script>";
 			}
 		?>
@@ -427,19 +430,8 @@
 							<th>Joueurs</th>
 						</tr>
 					</thead>
-					<tbody>
-						<tr class="active">
-							<td></td>
-						</tr>
-						<tr class="success">
-							<td></td>
-						</tr>
-						<tr class="active">
-							<td></td>
-						</tr>
-						<tr class="success">
-							<td></td>
-						</tr>
+					<tbody id="playerList">
+
 						
 					</tbody>
 				</table>
