@@ -1,5 +1,6 @@
 $(function(){
 // Déclaration des variables global du jeu
+var startGame = false;
 var nbClick = 0; // Nombre de click sur les cartes
 var nbPairTotal = 5; // Nombre de pair sur la grille
 var nbPair = 0 ;// Nombre de pair trouvé initialisation importante
@@ -12,7 +13,6 @@ var playerWait; // Variable pour l'attente a chaque tours
 
 ////// Gestion de la page de login et inscription
 	$('#modalStart').modal('show');
-	$('#validMdp').hide();
 	$("#activeInscription").click(function(){
 		// L'utilisateur veut s'incrire
 		$('#validMdp').show();
@@ -56,7 +56,7 @@ var playerWait; // Variable pour l'attente a chaque tours
 				// requete ajax TODO (validation login server)	
 			}
 		}
-		//connexionValid = true;
+		connexionValid = true;
 		// Si tout est ok coté serveur alors on accède au page suivante
 		if ( connexionValid == true){
 			// Tout est OK
@@ -112,6 +112,7 @@ var playerWait; // Variable pour l'attente a chaque tours
 	});
 	$('.typePartie').click(function(){
 		var typePartie = $('.typePartie .active');
+		
 		console.debug(typePartie);
 	});
 	
@@ -131,6 +132,7 @@ var playerWait; // Variable pour l'attente a chaque tours
 	});
 			
 ////// Mise à jour du temps toutes les secondes
+		if (startGame == true){
 		  $('.countdown').html(10);
 		  var doUpdate = setInterval(
 			function() {
@@ -156,7 +158,7 @@ var playerWait; // Variable pour l'attente a chaque tours
 			  
 					new WOW().init();
 				  $(".card").height($(".card").width());// Mise en forme des cartes (largeur = longueur)
-				  
+				 } 
 				  
 				  $('.card').click(function(){
 					// si la zone ne correspond pas à une zone deja trouvé
