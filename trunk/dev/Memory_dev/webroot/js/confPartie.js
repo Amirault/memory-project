@@ -33,7 +33,6 @@ $(function(){
 			$("#nomPartie").removeAttr( "disabled" );
 			$("#nbJoueur").removeAttr( "disabled" );
 		}
-		console.debug(typePartie);
 	});
 	
 	$("#creerPartie").click(function(){
@@ -42,7 +41,7 @@ $(function(){
 	var nbPlayers = $("#nbJoueur").val();
 	var nbPairs = $(".nbPaire.active").html();
 
-		// requete ajax d'inscription
+		// requete ajax de creation de partie
 		$.ajax({
 		async: false,
 		dataType: "json",
@@ -52,8 +51,13 @@ $(function(){
 		success: function (data, textStatus)
 				{
 					alert(data.message);
+					$('#modalBeforeGame').modal('hide');
+					$('#modalWaitPlayer').modal({
+						  backdrop: 'static',
+						  keyboard: false });
 				}
 		});
+		setInterval(function(){refreshPlayers(game_id)},1000);	 
 	});
 	
 	$("#joinGame").click(function(){
@@ -68,6 +72,7 @@ $(function(){
 				{
 					var ite = 0;
 					var classe;
+					$("#gameList").html("");
 					jQuery.each(data, function(i, val)
 					{
 						ite ++;
@@ -77,6 +82,7 @@ $(function(){
 							classe = "success";
 						$("#gameList").append("<tr class='"+classe+"'><td>"+val["Game"]["name"]+"</td><td>"+val["Player"]["login"]+"</td><td>"+val["GamePlayer"].length+"/"+val["Game"]["numberMaximumOfPlayers"]+"</td><td style='padding:0'><button class='btnJoin' id='"+val["Game"]["id"]+"' class='btn btn-default span12'> GO ! </button></td></tr>");															
 					});
+
 				}		
 		});
 	});
@@ -92,7 +98,49 @@ $(function(){
 		success: function (data, textStatus)
 				{
 					alert(data.message);
+					$('#modalBeforeGame').modal('hide');
+					$('#modalWaitPlayer').modal({
+						  backdrop: 'static',
+						  keyboard: false
+					});
+
 				}
 		});
+	setInterval(function(){refreshPlayers(game_id)},1000);
 	});
+	
+	function refreshPlayers(game_id)
+	{
+		console.debug(game_id);
+		$.ajax({
+		async: false,
+		dataType: "json",
+		type: "POST",
+		url: "gamePlayers/getGame",
+		data: ({gameId:game_id}),
+		success: function (data, textStatus)
+				{
+					console.debug(data);
+					$('#modalBeforeGame').modal('hide');
+					$('#modalWaitPlayer').modal({
+						  backdrop: 'static',
+						  keyboard: false
+			});
+			$("#playerList").html("");
+			var ite = 0;
+			jQuery.each(data, function(i, val)
+					{
+						ite ++;
+						if (ite%2==1)
+							classe = "active";
+						else
+							classe = "success";
+						if (val["Player"]["id"] == val["Game"]["player_id"])
+							$("#playerList").append("<tr class='"+classe+"'><td> HOST "+val["Player"]["login"]+"</td></tr>");		
+						else
+						$("#playerList").append("<tr class='"+classe+"'><td>"+val["Player"]["login"]+"</td></tr>");															
+					});
+				}
+		});
+	}
 });
