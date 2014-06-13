@@ -209,6 +209,7 @@ var game_id;
 							alert(data.message);
 							startGame=true;
 							clearInterval(timer);
+							timer = setInterval(function(){refreshGrille(game_id);},1000);
 							$('#modalWaitPlayer').modal('hide');
 						}	
 			});	
