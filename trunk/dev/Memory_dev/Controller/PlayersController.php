@@ -124,10 +124,12 @@ class PlayersController extends AppController {
 				$password = $this->request->data['password'];
 				$options = array('conditions' => array('Player.login' => $login, 'Player.password' => $password));
 				$nbLoginPassword = $this->Player->find('count', $options);
+				$player = $this->Player->find('first', $options);
 				if ($nbLoginPassword == 1)
 				{
 					session_start();
 					$_SESSION["login"] = $login;
+					$_SESSION["id_player"] = $player['Player']['id'];
 					$stt = true;
 					$message = "Bienvenue ".$login." !";
 				}
@@ -165,8 +167,12 @@ class PlayersController extends AppController {
 				$password = $this->request->data['password'];
 				$this->Player->create(array('Player.login' => $login,'Player.password'=> $password));
 				$this->Player->save($this->request->data);
+				
+				$options = array('conditions' => array('Player.login' => $login, 'Player.password' => $password));
+				$player = $this->Player->find('first', $options);
 				session_start();
 				$_SESSION["login"] = $login;
+				$_SESSION["id_player"] = $player['Player']['id'];
 				$stt = true;
 				$message = "Bienvenue ".$login." !";
 			}

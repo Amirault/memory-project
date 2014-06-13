@@ -1,8 +1,122 @@
 $(function(){
+// Déclaration des variables global du jeu
+var startGame = false;
+var nbClick = 0; // Nombre de click sur les cartes
+var nbPairTotal = 5; // Nombre de pair sur la grille
+var nbPair = 0 ;// Nombre de pair trouvé initialisation importante
+var firstCard = {}; // Information sur la première carte cliqué
+var secondCard = {}; // Information sur la seconde carte cliqué
+var playerWait; // Variable pour l'attente a chaque tours
+var dataGame = {};
+var waiting_user = false;
+//$(document).ajaxStop($.unblockUI);
+
+//// script de gestion de la fin du jeu
+	$(".validEndGame").click(function(){
+		if ($(this).val() == 'rejouer'){
+			// On redemarre le jeu, on patiente. si on est host alors on peut démarrer la partie si nbjoueur > 1
+			$('#modalWin').modal('hide');
+			$('#modalWaitPlayer').modal({
+			  backdrop: 'static',
+			  keyboard: false
+			});
+			// Lancement du pool ajax selon si on est host ou visiteur
+		}
+		else{
+			// On retourne à la page de configuration de la partie
+			$('#modalWin').modal('hide');
+			$('#modalBeforeGame').modal({
+			  backdrop: 'static',
+			  keyboard: false
+			});
+		}
+	});
+			
+ 
+		  
+				  
+				  $('body').on('click', '.card', function(){
+					console.log("un click"+nbClick);
+					// si la zone ne correspond pas à une zone deja trouvé
+					if ($(this).attr('found') == 'false'){
+						switch (nbClick){
+							case 0 :// Premier click
+								$(this).addClass('hover');	
+								firstCard['ligne'] = $(this).attr('ligne');
+								firstCard['colonne'] = $(this).attr('colonne');
+								firstCard['idPair'] = $(this).attr('idPair');
+								firstCard['set'] = true;
+								nbClick ++;
+								// requête ajax  première carte retournée
+								break;
+							case 1 :// Second click
+									console.log("clique 2");
+								// Test Carte non cliqué
+								if ((firstCard['ligne'] != $(this).attr('ligne')) || (firstCard['colonne'] !=  $(this).attr('colonne'))){
+									secondCard['ligne'] = $(this).attr('ligne');
+									secondCard['colonne'] = $(this).attr('colonne');
+									secondCard['idPair'] = $(this).attr('idPair');
+									secondCard['set'] = true;
+									// Test si c'est une paire
+									$(this).addClass('hover'); 
+									if (($(this).attr('idPair') == firstCard['idPair'])){
+										$(".card[idPaire='"+$(this).attr('idPair')+"']").attr( 'found','true');
+										nbClick = 0; // le joueur peut rejouer car il a trouvé une paire
+										$('.countdown').html(10);
+										secondCard['set'] = false;
+										firstCard['set'] = false;
+										nbPair ++;
+										// Test si toute les cartes ont été retournéeq
+										if ( nbPair == nbPairTotal){
+										// On regarde le nombre de pair de chacun
+											// On affiche Bravo et perdu sur les autres joueur puis le tableau des scores
+											//alert('bravo');
+											$.unblockUI();
+											
+											$('#modalWin').modal({
+											  backdrop: 'static',
+											  keyboard: false
+											});
+											//return false:
+											// requete ajax pour informer de la fin de la partie
+										}
+										// requête ajax seconde carte retournée
+										break;
+									}
+									else
+									{ 
+									console.log("second click");
+									// On bloque le joueur (patiente) car c'est au joueur suivant de jouer
+										// On attends un peu avant de retourner les cartes puis on donne la main au joueur suivant
+										// NextUSER ATTENTION NUMBERPLAYER ET NON MAXIMUM CHANGER
+										$.ajax({
+										async: false,
+										dataType: "json",
+										type: "POST",
+										url: "games/nextPlayer",
+										data: ({gameId:dataGame['Game']['id'],currentPlayer:dataGame['Game']['currentPlayer'],nbPlayer:dataGame['GamePlayer'].length}),
+										success: function (data, textStatus)
+												{
+													console.debug("nextPlayer");
+												}
+										});
+										refreshStatus(dataGame['Game']['id']);
+									}
+								}
+								//nbClick ++;
+								break;
+							default :
+							break;
+						}
+					}
+				  });
+				  
 ////// Gestion de la configuration d'une partie
 var isHost = false;
 var timer, timer2;
 var game_id;
+
+//console.log(login);
 
 	$('#nbJoueur').on('change', function() {
 		// Choix du nombre de joueur dans la combobox
@@ -92,7 +206,7 @@ var game_id;
 				}		
 		});
 	});
-
+// L'utilisateur join une partie
 	$('body').on('click', '.btnJoin',  function() {
 		var game_id =  $(this).attr('id');
 		$.ajax({
@@ -113,10 +227,10 @@ var game_id;
 				}
 		});
 		timer = setInterval(function(){refreshPlayers(game_id);},1000);
-		timer2 = setInterval(function(){refreshGame(game_id);},1000)
+		timer2 = setInterval(function(){refreshWaitingGame(game_id);},1000)
 	});
-	
-	function refreshGame(gid)
+// Refraichissement en attendant que le jeux démarre	
+	function refreshWaitingGame(gid)
 	{
 		game_id=gid;
 		$.ajax({
@@ -133,15 +247,16 @@ var game_id;
 						clearInterval(timer);
 						clearInterval(timer2);
 						$('#modalWaitPlayer').modal('hide');
-						timer = setInterval(function(){refreshGrille(game_id);},1000);
+						timer = setInterval(function(){refreshStatus(game_id);},1000);
 					}
 					
 				}
 		});
 	}
-	
-	function refreshGrille(gid)
+// Mise à jour du statut de la partie (toutes les infos)	
+	function refreshStatus(gid)
 	{
+		console.log("refresh");
 		game_id=gid;
 		$.ajax({
 		async: false,
@@ -152,10 +267,58 @@ var game_id;
 		success: function (data, textStatus)
 				{
 					console.debug(data);
+					console.debug(data['Game']['numberMaximumOfPlayers']);
+					dataGame = data;
+					if (dataGame['GamePlayer'][dataGame['Game']['currentPlayer']]['player_id'] -id == 0){
+						$.unblockUI();
+						clearInterval(timer);
+						loadGrid();
+						// C'est mon tour je joue
+						console.log('joue '+id);
+						playerPlay();
+						waiting_user = false;
+					}else{
+						// On attends que ce soit notre tour
+						console.log("en attente"+dataGame['GamePlayer'][dataGame['Game']['currentPlayer']]['player_id'] );
+						
+						if (waiting_user == false){
+							$(".card").height($(".card").width());// Mise en forme des cartes (largeur = longueur)
+							waitPlayer();
+							waiting_user = true;
+						}
+						loadGrid();
+					}
 				}
 		});
 	}
-	
+	////// Mise à jour du temps toutes les secondes
+		function playerPlay(){
+		$('.countdown').html(10);
+		  var doUpdate = setInterval(
+			function() {
+			$('.countdown').each(function() {
+			  var count = parseInt($(this).html());
+			  if (count != 0) {
+				$(this).html(count - 1);
+					if (count <= 4) {
+						$(".countdown").css('color','red');
+					}
+			  }
+			  else if (count == 0)
+			  {
+				$(".countdown").css('color','black');
+				nbClick = 3;
+				waitPlayer();
+				clearInterval(doUpdate);
+			  }
+			});
+			},1000
+			);
+			// var setInterval(doUpdate, 1000);
+			  
+			new WOW().init();
+		  $(".card").height($(".card").width());// Mise en forme des cartes (largeur = longueur)
+		}
 	function refreshPlayers(gid)
 	{
 		game_id=gid;
@@ -209,7 +372,8 @@ var game_id;
 							alert(data.message);
 							startGame=true;
 							clearInterval(timer);
-							timer = setInterval(function(){refreshGrille(game_id);},1000);
+							//timer = setInterval(function(){refreshGrille(game_id);},1000);
+							refreshStatus(game_id);
 							$('#modalWaitPlayer').modal('hide');
 						}	
 			});	
@@ -233,23 +397,65 @@ var game_id;
 	}
 	function loadGrid(){
 		var str;
+		var colMax;
+		var ligneMax;
 		$("#gridGame").html("");
-		for (i=1; i <= 4; i++){
+		if (dataGame['Difficulty']['numberOfPairs'] == 8){
+			colMax = 4;
+			ligneMax = 4;
+		}else if (dataGame['Difficulty']['numberOfPairs'] == 16){
+			colMax = 8;
+			ligneMax = 4;
+		}
+		for (i=0; i < ligneMax; i++){
 			str = '<div class="row-fluid">';
-			for (j=1; j <= 8; j++){
-				str += 
-				'<div class="span1 card flip-container" ligne="'+i+'" colonne="'+j+'" flipped="back" found="false" idPair="3" style="position:relative;overflow:hidden">'+
-					+'<div class="flipper">'+
-						+'<div class="flip-front">'+
-								+'<img src="img/back-card.png" />'+
-						+'</div>'+
-						+'<div class="flip-back">'+
-								+'<img class="img-card" src="img/tony.jpg" />'+
+			for (j=0; j < colMax; j++){
+				if (dataGame['GameCard'][i*colMax+j]['isFlippedUp']){
+					str += '<div class="span1 card flip-container hover"';
+				}else{
+					str += '<div class="span1 card flip-container"';
+				}
+				str += ' ligne="'+i+'" colonne="'+j+'" flippedUp="'+dataGame['GameCard'][i*colMax+j]['isFlippedUp']+'" found="'+dataGame['GameCard'][i*colMax+j]['isGone']+'" idPair="'+dataGame['GameCard'][i*colMax+j]['card_id']+'" style="position:relative;overflow:hidden">'
+					+'<div class="flipper">'
+						+'<div class="flip-front">'
+								+'<img src="img/back-card.png" />'
 						+'</div>'
+						+'<div class="flip-back">'
+								+'<img class="img-card" src="img/trombi/Info/'+dataGame['GameCard'][i*colMax+j]['card_id']+'.jpg" />'
+						+'</div>'
+					+'</div>'
 				+'</div>';
 			}
-			str += '</div>';
+			str += '</div><br />';
 			$("#gridGame").append(str);
 		}
 	}
+	function waitPlayer(){
+							   if (firstCard != {}){
+								if (firstCard['set'] == true){
+								   // On retourne les cartes
+									$(".card[ligne='"+firstCard['ligne']+"'][colonne='"+firstCard['colonne']+"']").removeClass('hover'); 
+								}
+								if (secondCard['set'] == true){
+									$(".card[ligne='"+secondCard['ligne']+"'][colonne='"+secondCard['colonne']+"']").removeClass('hover');
+								}
+								}
+								 $.blockUI({ 
+								message: '<h1>Veuillez patienter !</h1>',	
+								css: { 
+									border: 'none',										
+									padding: '15px', 
+									bottom : '10px',
+									left: '25%',
+									right: '',
+									top: '',
+									backgroundColor: '#000', 
+									'-webkit-border-radius': '10px', 
+									'-moz-border-radius': '10px', 
+									opacity: 0.5, 
+									color: '#fff'													
+								} });
+								//$(this).addClass('hover'); 
+								// requête Ajax On passe au joueur suivant
+								}
 });
