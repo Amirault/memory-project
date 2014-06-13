@@ -344,7 +344,7 @@ var game_id;
 	////// Mise à jour du temps toutes les secondes
 		function playerPlay(){
 		$('.countdown').html(10);
-		  var doUpdate = setInterval(
+		/*  var doUpdate = setInterval(
 			function() {
 			$('.countdown').each(function() {
 			  var count = parseInt($(this).html());
@@ -375,7 +375,7 @@ var game_id;
 			  }
 			});
 			},1000
-			);
+			);*/
 			// var setInterval(doUpdate, 1000);
 			  
 		//	new WOW().init();
