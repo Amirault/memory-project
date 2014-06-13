@@ -196,4 +196,42 @@ var game_id;
 						}	
 			});	
 	});
+	function refreshGrid(tab){
+		// rechargement des elements de la grille si modification (comparaison)
+		for (i=1; i <= 4; i++){
+			for (j=1; j <= 8; j++){
+				if ($(".card[ligne='"+i+"'][colonne='"+j+"']").attr('flipped') != tab[i][j].found){
+					// On retourne la carte du sens du server
+					if (tab[i][j].found == 'back'){
+						$(".card[ligne='"+i+"'][colonne='"+j+"']").attr('flipped','back');
+						$(".card[ligne='"+i+"'][colonne='"+j+"']").removeClass('hover');
+					}else{
+						$(".card[ligne='"+i+"'][colonne='"+j+"']").attr('flipped','up');
+						$(".card[ligne='"+i+"'][colonne='"+j+"']").removeClass('hover');
+					}
+				}
+			}
+		}
+	}
+	function loadGrid(){
+		var str;
+		$("#gridGame").html("");
+		for (i=1; i <= 4; i++){
+			str = '<div class="row-fluid">';
+			for (j=1; j <= 8; j++){
+				str += 
+				'<div class="span1 card flip-container" ligne="'+i+'" colonne="'+j+'" flipped="back" found="false" idPair="3" style="position:relative;overflow:hidden">'+
+					+'<div class="flipper">'+
+						+'<div class="flip-front">'+
+								+'<img src="img/back-card.png" />'+
+						+'</div>'+
+						+'<div class="flip-back">'+
+								+'<img class="img-card" src="img/tony.jpg" />'+
+						+'</div>'
+				+'</div>';
+			}
+			str += '</div>';
+			$("#gridGame").append(str);
+		}
+	}
 });
