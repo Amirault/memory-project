@@ -198,7 +198,7 @@ class GamesController extends AppController {
 	}
 	
 	
-	public nextPlayer() {
+	public function nextPlayer() {
 		$this->autoRender = false;
 		if ($this->request->is('ajax'))
 		{
