@@ -133,7 +133,7 @@ class GamesController extends AppController {
 			
 			
 			$this->Game->create();
-			$this->Game->save(array('difficulty_id'=> $difficulty['Difficulty']['id'], 'name'=> $gameName, 'gameType_id'=> $gameType["GameType"]["id"], 'numberMaximumOfPlayers'=> $nbPlayers, 'player_id'=> $hostPlayer["Player"]["id"]));
+			$this->Game->save(array('difficulty_id'=> $difficulty['Difficulty']['id'], 'name'=> $gameName, 'gameType_id'=> $gameType["GameType"]["id"], 'numberMaximumOfPlayers'=> $nbPlayers, 'player_id'=> $hostPlayer["Player"]["id"], 'currentPlayer' => 0));
 			$gameId = $this->Game->getInsertID();
 			
 			$this->Game->GamePlayer->create();
