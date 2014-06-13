@@ -133,8 +133,25 @@ var game_id;
 						clearInterval(timer);
 						clearInterval(timer2);
 						$('#modalWaitPlayer').modal('hide');
+						timer = setInterval(function(){refreshGrille(game_id);},1000)
 					}
 					
+				}
+		});
+	}
+	
+	function refreshGrille(gid)
+	{
+		game_id=gid;
+		$.ajax({
+		async: false,
+		dataType: "json",
+		type: "POST",
+		url: "games/getGame",
+		data: ({gameId:game_id}),
+		success: function (data, textStatus)
+				{
+					console.debug(data);
 				}
 		});
 	}
