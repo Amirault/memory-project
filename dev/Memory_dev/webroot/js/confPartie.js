@@ -133,7 +133,7 @@ var game_id;
 						clearInterval(timer);
 						clearInterval(timer2);
 						$('#modalWaitPlayer').modal('hide');
-						timer = setInterval(function(){refreshGrille(game_id);},1000)
+						timer = setInterval(function(){refreshGrille(game_id);},1000);
 					}
 					
 				}
