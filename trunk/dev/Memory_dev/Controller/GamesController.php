@@ -196,4 +196,20 @@ class GamesController extends AppController {
 			echo json_encode($games);
 		}
 	}
+	
+		/**
+ * startGame method
+ * @return void
+ */
+	public function startGame() {
+		$this->autoRender = false;
+		if ($this->request->is('ajax'))
+		{
+			$arr=array('id' => $this->request->data['gameId'], 'isPending' =>  1);
+			$this->Game->save($arr);
+			
+			$message =  "La partie ".$this->request->data['gameId']." commence !";
+			echo json_encode(array('message'=> $message));
+		}
+	}
 }
