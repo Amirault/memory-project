@@ -179,7 +179,7 @@ class GamesController extends AppController {
 		{
 			$options = array('conditions' => array('Game.gameType_id' => 2, 'Game.isPending' => 0));
 			$games = $this->Game->find('all', $options);
-
+		
 			echo json_encode($games);
 		}
 	}
@@ -202,11 +202,10 @@ class GamesController extends AppController {
 		$this->autoRender = false;
 		if ($this->request->is('ajax'))
 		{
-			$arr=array('id' => $this->request->data['gameId'], 'currentPlayer' => $this->request->data['currentPlayer'] + 1%$this->request->data['nbPlayer'] );
+			$arr=array('id' => $this->request->data['gameId'], 'currentPlayer' => ($this->request->data['currentPlayer'] + 1)%($this->request->data['nbPlayer'] ));
 			$this->Game->save($arr);
-			
-			$message =  "La partie ".$this->request->data['gameId']." commence !";
-			echo json_encode(array('message'=> $message));
+			$game = $this->Game->findById($this->request->data['gameId']);
+			echo json_encode($game);
 		}
 	}
 	

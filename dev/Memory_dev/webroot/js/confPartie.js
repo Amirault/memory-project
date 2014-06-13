@@ -41,10 +41,25 @@ var waiting_user = false;
 					if ($(this).attr('found') == 'false'){
 						switch (nbClick){
 							case 0 :// Premier click
-								$(this).addClass('hover');	
+								$(this).addClass('hover');
+								$.ajax({
+										async: true,
+										dataType: "json",
+										type: "POST",
+										url: "gameCards/flipCard",
+										data: ({gameCardId:$(this).attr('idGCard'),gameId: dataGame['Game']['id'],isFlippedUp:1}),
+										success: function (data, textStatus)
+												{
+													console.debug("AfficheCard");
+													console.debug(data);
+													dataGame=data;
+												}
+
+										});								
 								firstCard['ligne'] = $(this).attr('ligne');
 								firstCard['colonne'] = $(this).attr('colonne');
 								firstCard['idPair'] = $(this).attr('idPair');
+								firstCard['idGCard'] =$(this).attr('idGCard');
 								firstCard['set'] = true;
 								nbClick ++;
 								// requête ajax  première carte retournée
@@ -53,12 +68,27 @@ var waiting_user = false;
 									console.log("clique 2");
 								// Test Carte non cliqué
 								if ((firstCard['ligne'] != $(this).attr('ligne')) || (firstCard['colonne'] !=  $(this).attr('colonne'))){
+									
 									secondCard['ligne'] = $(this).attr('ligne');
 									secondCard['colonne'] = $(this).attr('colonne');
 									secondCard['idPair'] = $(this).attr('idPair');
 									secondCard['set'] = true;
 									// Test si c'est une paire
-									$(this).addClass('hover'); 
+									$(this).addClass('hover'); 									
+									$.ajax({
+										async: true,
+										dataType: "json",
+										type: "POST",
+										url: "gameCards/flipCard",
+										data: ({gameCardId:$(this).attr('idGCard'),gameId: dataGame['Game']['id'],isFlippedUp:1}),
+										success: function (data, textStatus)
+												{
+		
+													console.debug("AfficheCard");
+													dataGame=data;
+												}
+
+										});
 									if (($(this).attr('idPair') == firstCard['idPair'])){
 										$(".card[idPaire='"+$(this).attr('idPair')+"']").attr( 'found','true');
 										nbClick = 0; // le joueur peut rejouer car il a trouvé une paire
@@ -66,6 +96,7 @@ var waiting_user = false;
 										secondCard['set'] = false;
 										firstCard['set'] = false;
 										nbPair ++;
+										
 										// Test si toute les cartes ont été retournéeq
 										if ( nbPair == nbPairTotal){
 										// On regarde le nombre de pair de chacun
@@ -86,6 +117,20 @@ var waiting_user = false;
 									else
 									{ 
 									console.log("second click");
+									$.ajax({
+										async: true,
+										dataType: "json",
+										type: "POST",
+										url: "gameCards/flipCardDown",
+										data: ({gameCardId:$(this).attr('idGCard'),gameCardId2: firstCard['idGCard'],gameId:dataGame['Game']['id']}),
+										success: function (data, textStatus)
+												{
+		
+													console.debug("AfficheCard");
+													dataGame=data;
+												}
+
+										});
 									// On bloque le joueur (patiente) car c'est au joueur suivant de jouer
 										// On attends un peu avant de retourner les cartes puis on donne la main au joueur suivant
 										// NextUSER ATTENTION NUMBERPLAYER ET NON MAXIMUM CHANGER
@@ -98,9 +143,12 @@ var waiting_user = false;
 										success: function (data, textStatus)
 												{
 													console.debug("nextPlayer");
+													dataGame=data;
+													timer = setInterval(function(){refreshStatus(dataGame['Game']['id'])},200);
 												}
 										});
-										refreshStatus(dataGame['Game']['id']);
+										
+										
 									}
 								}
 								//nbClick ++;
@@ -108,6 +156,7 @@ var waiting_user = false;
 							default :
 							break;
 						}
+							
 					}
 				  });
 				  
@@ -266,11 +315,12 @@ var game_id;
 		data: ({gameId:game_id}),
 		success: function (data, textStatus)
 				{
-					console.debug(data);
-					console.debug(data['Game']['numberMaximumOfPlayers']);
 					dataGame = data;
+					console.debug("Current : "+dataGame['Game']['currentPlayer']);
 					if (dataGame['GamePlayer'][dataGame['Game']['currentPlayer']]['player_id'] -id == 0){
 						$.unblockUI();
+						nbClick = 0;
+						$('.countdown').html(10);
 						clearInterval(timer);
 						loadGrid();
 						// C'est mon tour je joue
@@ -280,13 +330,13 @@ var game_id;
 					}else{
 						// On attends que ce soit notre tour
 						console.log("en attente"+dataGame['GamePlayer'][dataGame['Game']['currentPlayer']]['player_id'] );
-						
+						nbClick = 0;
 						if (waiting_user == false){
-							$(".card").height($(".card").width());// Mise en forme des cartes (largeur = longueur)
 							waitPlayer();
 							waiting_user = true;
 						}
 						loadGrid();
+						$(".card").height($(".card").width());// Mise en forme des cartes (largeur = longueur)
 					}
 				}
 		});
@@ -307,16 +357,28 @@ var game_id;
 			  else if (count == 0)
 			  {
 				$(".countdown").css('color','black');
-				nbClick = 3;
-				waitPlayer();
 				clearInterval(doUpdate);
+				$.ajax({
+						async: false,
+						dataType: "json",
+						type: "POST",
+						url: "games/nextPlayer",
+						data: ({gameId:dataGame['Game']['id'],currentPlayer:dataGame['Game']['currentPlayer'],nbPlayer:dataGame['GamePlayer'].length}),
+						success: function (data, textStatus)
+								{
+									console.debug("nextPlayer");
+									dataGame=data;
+									$(".countdown").html(10);
+								}
+						});
+				
 			  }
 			});
 			},1000
 			);
 			// var setInterval(doUpdate, 1000);
 			  
-			new WOW().init();
+		//	new WOW().init();
 		  $(".card").height($(".card").width());// Mise en forme des cartes (largeur = longueur)
 		}
 	function refreshPlayers(gid)
@@ -410,12 +472,15 @@ var game_id;
 		for (i=0; i < ligneMax; i++){
 			str = '<div class="row-fluid">';
 			for (j=0; j < colMax; j++){
-				if (dataGame['GameCard'][i*colMax+j]['isFlippedUp']){
+				
+				if (dataGame['GameCard'][i*colMax+j]['isFlippedUp'] == true){
+		console.debug(dataGame['GameCard'][i*colMax+j]['isFlippedUp']);
 					str += '<div class="span1 card flip-container hover"';
 				}else{
+				console.log("faux");
 					str += '<div class="span1 card flip-container"';
 				}
-				str += ' ligne="'+i+'" colonne="'+j+'" flippedUp="'+dataGame['GameCard'][i*colMax+j]['isFlippedUp']+'" found="'+dataGame['GameCard'][i*colMax+j]['isGone']+'" idPair="'+dataGame['GameCard'][i*colMax+j]['card_id']+'" style="position:relative;overflow:hidden">'
+				str += ' ligne="'+i+'" colonne="'+j+'" idGCard="'+dataGame['GameCard'][i*colMax+j]['id']+'" flippedUp="'+dataGame['GameCard'][i*colMax+j]['isFlippedUp']+'" found="'+dataGame['GameCard'][i*colMax+j]['isGone']+'" idPair="'+dataGame['GameCard'][i*colMax+j]['card_id']+'" style="position:relative;overflow:hidden">'
 					+'<div class="flipper">'
 						+'<div class="flip-front">'
 								+'<img src="img/back-card.png" />'

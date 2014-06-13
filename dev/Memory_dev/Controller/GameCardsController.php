@@ -112,7 +112,21 @@ class GameCardsController extends AppController {
 		$this->autoRender = false;
 		if ($this->request->is('ajax'))
 		{
-			$this->GameCard->save(array('id'=> $this->request->data['GameCardId'], 'isFlippedUp' =>  $this->request->data['isFlippedUp']));
+			$this->GameCard->save(array('id'=> $this->request->data['gameCardId'],  'isFlippedUp' => true));
+			$game = $this->GameCard->Game->findById($this->request->data['gameId']);
+			echo json_encode($game);
+		}
+	}
+	
+	public function flipCardDown() {
+		$this->autoRender = false;
+		if ($this->request->is('ajax'))
+		{
+			
+			$this->GameCard->save(array('id'=> $this->request->data['gameCardId'],  'isFlippedUp' => false));
+			$this->GameCard->save(array('id'=> $this->request->data['gameCardId2'],  'isFlippedUp' => false));
+			$game = $this->GameCard->Game->findById($this->request->data['gameId']);
+			echo json_encode($game);
 		}
 	}
 	

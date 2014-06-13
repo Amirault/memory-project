@@ -3,7 +3,8 @@
 			
 			if(isset($_SESSION["login"]))
 			{
-				echo "<script>$(document).ready(function()
+				echo "<script>
+								$(document).ready(function()
 												{
 													$('#modalStart').modal('hide');
 													$('#modalBeforeGame').modal({
@@ -12,146 +13,21 @@
 									});
 											})
 					;</script>";
+					?>
+					<script>
+						var login = '<?php echo $_SESSION["login"]; ?>';
+						var id = '<?php echo $_SESSION["id_player"]; ?>';
+					</script>
+		<?php
 			}
 		?>
+		
 <div id="JEU" style="height:100%;">
 		<div class="row-fluid" style="height:100%; >
 			<div class="span9">
-				<div class="row-fluid wow bounceInUp" style="padding:5%;height:100%;">
+				<div class="row-fluid wow bounceInUp" id="gridGame" style="padding:5%;height:100%;">
 					<!-- ZONE DE JEU -->
-					<div class="row-fluid">
-						<div class="span1 card flip-container" ligne="1" colonne="1" found="false" idPair="3" style="position:relative;overflow:hidden">
-							<div class="flipper">
-								<div class="flip-front">
-									<img src="img/back-card.png" />
-								</div>
-								<div class="flip-back">
-									<img src="img/tony.jpg" />
-								</div>
-							</div>
-						</div>
-						<div class="span1 card flip-container" ligne="1" colonne="2" found="false" idPair="2" style="position:relative;overflow:hidden">
-							<div class="flipper">
-								<div class="flip-front">
-									<img src="img/back-card.png" />
-								</div>
-								<div class="flip-back" >
-									<img src="img/eyal.jpg" />
-								</div>
-							</div>
-						</div>
-						<div class="span1 card flip-container" ligne="1" colonne="3"  found="false" idPair="0" style="position:relative;overflow:hidden">
-							<div class="flipper">
-								<div class="flip-front">
-									<img src="img/back-card.png" />
-								</div>
-								<div class="flip-back" >
-									<img src="img/sof.jpg" />
-								</div>
-							</div>
-						</div>
-						<div class="span1 card flip-container"  ligne="1" colonne="4" found="false" idPair="1" style="position:relative;overflow:hidden">
-							<div class="flipper">
-								<div class="flip-front">
-									<img src="img/back-card.png" />
-								</div>
-								<div class="flip-back" >
-									<img src="img/Dat.jpg" />
-								</div>
-							</div>
-						</div>
-						<div class="span1 card flip-container" ligne="1" colonne="5" found="false" idPair="0" style="position:relative;overflow:hidden">
-							<div class="flipper">
-								<div class="flip-front">
-									<img src="img/back-card.png" />
-								</div>
-								<div class="flip-back" >
-									<img src="img/sof.jpg" />
-								</div>
-							</div>
-						</div>
-						<div class="span1 card flip-container" ligne="1" colonne="6" found="false" idPair="1" style="position:relative;overflow:hidden">
-							<div class="flipper">
-								<div class="flip-front">
-									<img src="img/back-card.png" />
-								</div>
-								<div class="flip-back" >
-									<img src="img/Dat.jpg" />
-								</div>
-							</div>
-						</div>
-						<div class="span1 card flip-container" ligne="1" colonne="7" found="false" idPair="2" style="position:relative;overflow:hidden">
-							<div class="flipper">
-								<div class="flip-front">
-									<img src="img/back-card.png" />
-								</div>
-								<div class="flip-back" >
-									<img src="img/eyal.jpg" />
-								</div>
-							</div>
-						</div>
-						<div class="span1 card flip-container" ligne="1" colonne="8" found="false"  idPair="3" style="position:relative;overflow:hidden">
-							<div class="flipper">
-								<div class="flip-front">
-									<img src="img/back-card.png" />
-								</div>
-								<div class="flip-back" >
-									<img src="img/tony.jpg" />
-								</div>
-							</div>
-						</div>
-					</div>
-					<br/>
-					<div class="row-fluid">
-						<div class="span1 card flip-container" ligne="2" colonne="1" found="false" idPair="4" style="position:relative;overflow:hidden">
-							<div class="flipper">
-								<div class="flip-front">
-									<img src="img/back-card.png" />
-								</div>
-								<div class="flip-back" >
-									<img src="img/van.jpg" />
-								</div>
-							</div>
-						</div>
-						<div class="span1 card flip-container" ligne="2" colonne="2" found="false"  idPair="4" style="position:relative;overflow:hidden">
-							<div class="flipper">
-								<div class="flip-front">
-									<img src="img/back-card.png" />
-								</div>
-								<div class="flip-back" >
-									<img src="img/van.jpg" />
-								</div>
-							</div>
-						</div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-					</div>
-					<br/>
-					<div class="row-fluid">
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-					</div>
-					<br/>
-					<div class="row-fluid">
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-						<div class="span1 card" style="border:1px solid black"></div>
-					</div>
+					
 				</div>
 			</div>
 
