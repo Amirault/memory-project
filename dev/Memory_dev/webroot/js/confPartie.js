@@ -1,6 +1,9 @@
 $(function(){
 ////// Gestion de la configuration d'une partie
 var isHost = false;
+var timer, timer2;
+var game_id;
+
 	$('#nbJoueur').on('change', function() {
 		// Choix du nombre de joueur dans la combobox
 		// Désactivation des difficultées non utilisées
@@ -56,7 +59,8 @@ var isHost = false;
 					$('#modalWaitPlayer').modal({
 						  backdrop: 'static',
 						  keyboard: false });
-					setInterval(function(){refreshPlayers(data.gid)},1000);
+					game_id = data.gid;
+					timer = setInterval(function(){refreshPlayers(data.gid)},1000);
 				}
 		});
 	 
@@ -108,13 +112,13 @@ var isHost = false;
 
 				}
 		});
-		setInterval(function(){refreshPlayers(game_id)},1000);
+		timer = setInterval(function(){refreshPlayers(game_id);},1000);
+		timer2 = setInterval(function(){refreshGame(game_id);},1000)
 	});
 	
-	
-	function refreshGame(game_id)
+	function refreshGame(gid)
 	{
-		console.debug(game_id);
+		game_id=gid;
 		$.ajax({
 		async: false,
 		dataType: "json",
@@ -123,13 +127,21 @@ var isHost = false;
 		data: ({gameId:game_id}),
 		success: function (data, textStatus)
 				{
-
+					console.debug(data);
+					if (data["Game"]["isPending"] == 1)
+					{
+						clearInterval(timer);
+						clearInterval(timer2);
+						$('#modalWaitPlayer').modal('hide');
+					}
+					
 				}
-			});	
+		});
 	}
 	
-	function refreshPlayers(game_id)
+	function refreshPlayers(gid)
 	{
+		game_id=gid;
 		console.debug(game_id);
 		$.ajax({
 		async: false,
@@ -167,4 +179,21 @@ var isHost = false;
 				}
 		});
 	}
+	
+		$("#validLaunchGame").click(function(){
+			$.ajax({
+				async: false,
+				dataType: "json",
+				type: "POST",
+				url: "games/startGame",
+				data: ({gameId:game_id}),
+				success: function (data, textStatus)
+						{
+							alert(data.message);
+							startGame=true;
+							clearInterval(timer);
+							$('#modalWaitPlayer').modal('hide');
+						}	
+			});	
+	});
 });

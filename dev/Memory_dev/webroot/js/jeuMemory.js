@@ -9,9 +9,23 @@ var secondCard = {}; // Information sur la seconde carte cliqué
 var playerWait; // Variable pour l'attente a chaque tours
 
 //$(document).ajaxStop($.unblockUI);
-	$("#validLaunchGame").click(function(){
-	//
-	});
+
+	
+		
+	function refreshGame(game_id)
+	{
+		console.debug(game_id);
+		$.ajax({
+		async: false,
+		dataType: "json",
+		type: "POST",
+		url: "games/getGame",
+		data: ({gameId:game_id}),
+		success: function (data, textStatus)
+				{
+				}
+			});	
+	}
 //// script de gestion de la fin du jeu
 	$(".validEndGame").click(function(){
 		if ($(this).val() == 'rejouer'){
