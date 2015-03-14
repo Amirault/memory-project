@@ -1,0 +1,14 @@
+Google svn :
+https://code.google.com/p/memory-project/
+
+EasyPHP :
+
+http://www.easyphp.org/save-easyphp-devservervc9-latest.php
+
+CakePHP :
+
+http://cakephp.org/
+
+NetBeans :
+
+http://www.oracle.com/technetwork/java/javase/downloads/jdk-netbeans-jsp-142931.html
